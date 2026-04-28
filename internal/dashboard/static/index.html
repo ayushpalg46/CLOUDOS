@@ -25,20 +25,18 @@
                 <div class="logo">
                     <div class="logo-icon">
                         <svg viewBox="0 0 32 32" fill="none">
-                            <circle cx="16" cy="16" r="14" stroke="url(#logoGrad)" stroke-width="2"/>
-                            <path d="M10 16L14 20L22 12" stroke="url(#logoGrad)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                            <defs><linearGradient id="logoGrad" x1="0" y1="0" x2="32" y2="32"><stop stop-color="#6366f1"/><stop offset="1" stop-color="#a855f7"/></linearGradient></defs>
+                            <rect width="24" height="24" x="4" y="4" rx="6" fill="#8B5CF6"/>
+                            <path d="M11 16L15 20L21 12" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                         </svg>
                     </div>
                     <div class="logo-text">
                         <span class="logo-name">uniteOS</span>
-                        <span class="logo-version" id="version">v0.1.0</span>
+                        <span class="logo-version">LOCAL-FIRST VAULT</span>
                     </div>
                 </div>
             </div>
 
             <div class="nav-section">
-                <span class="nav-label">Overview</span>
                 <button class="nav-item active" data-page="dashboard" id="nav-dashboard">
                     <svg viewBox="0 0 20 20" fill="currentColor"><path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"/></svg>
                     <span>Dashboard</span>
@@ -47,37 +45,17 @@
                     <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1H8a3 3 0 00-3 3v1.5a1.5 1.5 0 01-3 0V6z" clip-rule="evenodd"/><path d="M6 12a2 2 0 012-2h8a2 2 0 012 2v2a2 2 0 01-2 2H2h2a2 2 0 002-2v-2z"/></svg>
                     <span>Files</span>
                 </button>
-            </div>
-
-            <div class="nav-section">
-                <span class="nav-label">Intelligence</span>
                 <button class="nav-item" data-page="ai" id="nav-ai">
                     <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 2a8 8 0 100 16 8 8 0 000-16zM9 14v-2.07l-3.24-1.62a1 1 0 010-1.78L9 6.91V5a1 1 0 112 0v1.91l3.24 1.62a1 1 0 010 1.78L11 11.93V14a1 1 0 11-2 0z" clip-rule="evenodd"/></svg>
-                    <span>AI Assistant</span>
+                    <span>Intelligence</span>
                 </button>
-            </div>
-
-            <div class="nav-section">
-                <span class="nav-label">Sync & Devices</span>
                 <button class="nav-item" data-page="sync" id="nav-sync">
                     <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/></svg>
                     <span>Sync Status</span>
                 </button>
-                <button class="nav-item" data-page="snapshots" id="nav-snapshots">
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"/><path fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clip-rule="evenodd"/></svg>
-                    <span>Snapshots</span>
-                </button>
-            </div>
-
-            <div class="nav-section">
-                <span class="nav-label">System</span>
                 <button class="nav-item" data-page="security" id="nav-security">
                     <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg>
                     <span>Security</span>
-                </button>
-                <button class="nav-item" data-page="events" id="nav-events">
-                    <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M6 2a1 1 0 00-1 1v1H4a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V6a2 2 0 00-2-2h-1V3a1 1 0 10-2 0v1H7V3a1 1 0 00-1-1zm0 5a1 1 0 000 2h8a1 1 0 100-2H6z" clip-rule="evenodd"/></svg>
-                    <span>Event Log</span>
                 </button>
                 <button class="nav-item" data-page="settings" id="nav-settings">
                     <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M11.49 3.17c-.38-1.56-2.6-1.56-2.98 0a1.532 1.532 0 01-2.286.948c-1.372-.836-2.942.734-2.106 2.106.54.886.061 2.042-.947 2.287-1.561.379-1.561 2.6 0 2.978a1.532 1.532 0 01.947 2.287c-.836 1.372.734 2.942 2.106 2.106a1.532 1.532 0 012.287.947c.379 1.561 2.6 1.561 2.978 0a1.533 1.533 0 012.287-.947c1.372.836 2.942-.734 2.106-2.106a1.533 1.533 0 01.947-2.287c1.561-.379 1.561-2.6 0-2.978a1.532 1.532 0 01-.947-2.287c.836-1.372-.734-2.942-2.106-2.106a1.532 1.532 0 01-2.287-.947zM10 13a3 3 0 100-6 3 3 0 000 6z" clip-rule="evenodd"/></svg>
@@ -85,12 +63,16 @@
                 </button>
             </div>
 
-            <div class="sidebar-footer">
-                <div class="device-info">
-                    <div class="device-indicator"></div>
+            <div class="sidebar-footer" style="padding: 24px;">
+                <button class="btn btn-primary" style="width: 100%; justify-content: center; margin-bottom: 24px;">
+                    <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"/></svg>
+                    Add New Device
+                </button>
+                <div class="device-info" style="display: flex; align-items: center; gap: 12px;">
+                    <div style="width: 32px; height: 32px; border-radius: 50%; background-color: #8B5CF6; display: flex; align-items: center; justify-content: center; color: white;">A</div>
                     <div class="device-details">
-                        <span class="device-name" id="deviceName">Loading...</span>
-                        <span class="device-id" id="deviceId">...</span>
+                        <span class="device-name" id="deviceName" style="color: white; font-weight: 600;">SYS_ADMIN</span>
+                        <span class="device-id" id="deviceId" style="color: #10B981; font-size: 10px;">SECURE</span>
                     </div>
                 </div>
             </div>
@@ -107,54 +89,66 @@
                 <div class="top-bar-actions">
                     <div class="search-bar">
                         <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/></svg>
-                        <input type="text" placeholder="Search files..." id="searchInput">
+            <!-- Global Top Header -->
+            <header class="top-header" style="display: flex; align-items: center; justify-content: space-between; padding: 24px 32px; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                <div class="search-bar" style="display: flex; align-items: center; gap: 12px; background: rgba(0,0,0,0.2); padding: 8px 16px; border-radius: 6px; width: 400px; border: 1px solid rgba(255,255,255,0.05);">
+                    <svg viewBox="0 0 20 20" fill="currentColor" style="width: 16px; height: 16px; color: #94a3b8;"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/></svg>
+                    <input type="text" placeholder="Search global vault..." style="background: transparent; border: none; color: #e2e8f0; font-family: 'JetBrains Mono', monospace; font-size: 11px; outline: none; width: 100%; letter-spacing: 1px; text-transform: uppercase;">
+                </div>
+                <div class="header-actions" style="display: flex; align-items: center; gap: 24px; color: #94a3b8;">
+                    <div style="display: flex; align-items: center; gap: 8px; font-size: 10px; font-weight: 600; letter-spacing: 1px; color: #10b981;">
+                        <div style="width: 6px; height: 6px; border-radius: 50%; background: #10b981;"></div>
+                        SYNC ACTIVE
                     </div>
-                    <button class="btn-icon" id="refreshBtn" title="Refresh">
-                        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1z" clip-rule="evenodd"/></svg>
-                    </button>
+                    <svg viewBox="0 0 20 20" fill="currentColor" style="width: 18px; height: 18px; cursor: pointer;"><path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/></svg>
+                    <svg viewBox="0 0 20 20" fill="currentColor" style="width: 18px; height: 18px; cursor: pointer;"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg>
+                    <svg viewBox="0 0 20 20" fill="currentColor" style="width: 18px; height: 18px; cursor: pointer;"><path d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z"/></svg>
                 </div>
             </header>
 
             <!-- Page Content Container -->
-            <div class="page-content" id="pageContent">
+            <div class="page-content" id="pageContent" style="padding: 32px;">
                 <!-- Dashboard Page (default) -->
                 <div class="page active" id="page-dashboard">
+                    <div style="margin-bottom: 24px;">
+                        <h2 style="font-size: 14px; font-weight: 500; color: #e2e8f0; margin-bottom: 4px;">System Overview</h2>
+                        <p style="font-size: 12px; color: #94a3b8; font-family: 'JetBrains Mono', monospace;">Node: Local-Alpha-Secure</p>
+                    </div>
+
                     <!-- Stats Grid -->
-                    <div class="stats-grid" id="statsGrid">
-                        <div class="stat-card">
-                            <div class="stat-icon stat-icon-files">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M13 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V9z"/><polyline points="13,2 13,9 20,9"/></svg>
-                            </div>
-                            <div class="stat-info">
-                                <span class="stat-value" id="statFiles">—</span>
-                                <span class="stat-label">Tracked Files</span>
-                            </div>
+                    <div class="stats-grid" id="statsGrid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-bottom: 16px;">
+                        <div class="stat-card" style="background: #1A1D27; border: 1px solid rgba(255,255,255,0.05); padding: 24px; border-radius: 8px;">
+                            <div class="stat-label" style="font-size: 10px; font-weight: 700; letter-spacing: 1.5px; color: #94a3b8; margin-bottom: 16px;">TOTAL FILES</div>
+                            <div class="stat-value" id="statFiles" style="font-size: 32px; font-weight: 700; color: #a855f7;">142,892</div>
+                            <div style="font-size: 10px; color: #64748b; margin-top: 8px;">↗ +420 today</div>
                         </div>
-                        <div class="stat-card">
-                            <div class="stat-icon stat-icon-size">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 00-1-1.73l-7-4a2 2 0 00-2 0l-7 4A2 2 0 003 8v8a2 2 0 001 1.73l7 4a2 2 0 002 0l7-4A2 2 0 0021 16z"/></svg>
-                            </div>
-                            <div class="stat-info">
-                                <span class="stat-value" id="statSize">—</span>
-                                <span class="stat-label">Total Size</span>
-                            </div>
+                        <div class="stat-card" style="background: #1A1D27; border: 1px solid rgba(255,255,255,0.05); padding: 24px; border-radius: 8px;">
+                            <div class="stat-label" style="font-size: 10px; font-weight: 700; letter-spacing: 1.5px; color: #94a3b8; margin-bottom: 16px;">TOTAL SIZE</div>
+                            <div class="stat-value" id="statSize" style="font-size: 32px; font-weight: 700; color: #e2e8f0;">2.4 <span style="font-size: 14px; color: #64748b;">TB</span></div>
+                            <div style="font-size: 10px; color: #64748b; margin-top: 8px;">68% of local capacity</div>
                         </div>
-                        <div class="stat-card">
-                            <div class="stat-icon stat-icon-versions">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                            </div>
-                            <div class="stat-info">
-                                <span class="stat-value" id="statVersions">—</span>
-                                <span class="stat-label">Versions</span>
-                            </div>
+                        <div class="stat-card" style="background: #1A1D27; border: 1px solid rgba(255,255,255,0.05); padding: 24px; border-radius: 8px;">
+                            <div class="stat-label" style="font-size: 10px; font-weight: 700; letter-spacing: 1.5px; color: #94a3b8; margin-bottom: 16px;">SNAPSHOTS</div>
+                            <div class="stat-value" id="statSnapshots" style="font-size: 32px; font-weight: 700; color: #e2e8f0;">1,024</div>
+                            <div style="font-size: 10px; color: #64748b; margin-top: 8px;">↺ Every 15m</div>
                         </div>
-                        <div class="stat-card">
-                            <div class="stat-icon stat-icon-snapshots">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+                        <div class="stat-card" style="background: #1A1D27; border: 1px solid rgba(255,255,255,0.05); padding: 24px; border-radius: 8px; grid-row: span 2;">
+                            <div class="stat-label" style="font-size: 10px; font-weight: 700; letter-spacing: 1.5px; color: #94a3b8; margin-bottom: 24px;">SYSTEM HEALTH</div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 16px; font-size: 12px;">
+                                <span style="display: flex; align-items: center; gap: 8px; color: #e2e8f0;"><div style="width: 6px; height: 6px; border-radius: 50%; background: #10b981;"></div> Storage Engine</span>
+                                <span style="color: #64748b; font-family: 'JetBrains Mono', monospace;">99.9%</span>
                             </div>
-                            <div class="stat-info">
-                                <span class="stat-value" id="statSnapshots">—</span>
-                                <span class="stat-label">Snapshots</span>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 16px; font-size: 12px;">
+                                <span style="display: flex; align-items: center; gap: 8px; color: #e2e8f0;"><div style="width: 6px; height: 6px; border-radius: 50%; background: #10b981;"></div> Event Bus</span>
+                                <span style="color: #64748b; font-family: 'JetBrains Mono', monospace;">ACTIVE</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 16px; font-size: 12px;">
+                                <span style="display: flex; align-items: center; gap: 8px; color: #e2e8f0;"><div style="width: 6px; height: 6px; border-radius: 50%; background: #10b981;"></div> Sync Engine</span>
+                                <span style="color: #64748b; font-family: 'JetBrains Mono', monospace;">IDLE</span>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; margin-bottom: 16px; font-size: 12px;">
+                                <span style="display: flex; align-items: center; gap: 8px; color: #e2e8f0;"><div style="width: 6px; height: 6px; border-radius: 50%; background: #f59e0b;"></div> API Server</span>
+                                <span style="color: #f59e0b; font-family: 'JetBrains Mono', monospace;">LATENCY+</span>
                             </div>
                         </div>
                     </div>
