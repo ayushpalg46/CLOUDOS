@@ -1,0 +1,1 @@
+Meeting notes: discussed sync architecture, CRDT implementation, and P2P discovery protocol. Need to finalize encryption key exchange.

@@ -1,0 +1,25 @@
+# Go binaries and build output
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+bin/
+
+# CloudOS internal DB
+.cloudos/
+
+# IDE files
+.vscode/
+.idea/
+
+# Android/Flutter build output
+android_apk/build/
+android_apk/.dart_tool/
+android_apk/.flutter-plugins
+android_apk/.flutter-plugins-dependencies
+
+# Logs
+*.log
