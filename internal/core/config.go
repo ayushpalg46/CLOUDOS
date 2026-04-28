@@ -1,4 +1,4 @@
-// Package core provides the core runtime engine for CloudOS.
+// Package core provides the core runtime engine for UNITEos.
 // It manages the application lifecycle, configuration, and event system.
 package core
 
@@ -13,26 +13,26 @@ import (
 
 const (
 	// AppName is the application identifier.
-	AppName = "cloudos"
+	AppName = "uniteos"
 	// Version is the current application version.
 	Version = "0.1.0"
 	// ConfigFileName is the default configuration file name.
 	ConfigFileName = "config.json"
 	// DefaultDBName is the default database file name.
-	DefaultDBName = "cloudos.db"
+	DefaultDBName = "uniteos.db"
 	// DefaultBlobDir is the default blob storage directory.
 	DefaultBlobDir = "blobs"
 	// DefaultSnapshotDir is the default snapshot directory.
 	DefaultSnapshotDir = "snapshots"
 	// DefaultLogFile is the default log file name.
-	DefaultLogFile = "cloudos.log"
+	DefaultLogFile = "uniteos.log"
 )
 
-// Config holds all CloudOS configuration values.
+// Config holds all UNITEos configuration values.
 type Config struct {
-	// DataDir is the root directory for all CloudOS data.
+	// DataDir is the root directory for all UNITEos data.
 	DataDir string `json:"data_dir"`
-	// WorkspaceDir is the directory being tracked by CloudOS.
+	// WorkspaceDir is the directory being tracked by UNITEos.
 	WorkspaceDir string `json:"workspace_dir"`
 	// DatabasePath is the path to the SQLite database.
 	DatabasePath string `json:"database_path"`
@@ -62,7 +62,7 @@ type Config struct {
 
 // DefaultConfig creates a configuration with sensible defaults.
 func DefaultConfig(workspaceDir string) *Config {
-	dataDir := filepath.Join(workspaceDir, ".cloudos")
+	dataDir := filepath.Join(workspaceDir, ".uniteos")
 
 	hostname, _ := os.Hostname()
 	if hostname == "" {

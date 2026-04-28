@@ -1,4 +1,4 @@
-// Package crypto provides encryption, key management, and device identity for CloudOS.
+// Package crypto provides encryption, key management, and device identity for UNITEos.
 package crypto
 
 import (

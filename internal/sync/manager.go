@@ -9,8 +9,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ayushgpal/cloudos/internal/core"
-	"github.com/ayushgpal/cloudos/internal/storage"
+	"github.com/ayushgpal/uniteos/internal/core"
+	"github.com/ayushgpal/uniteos/internal/storage"
 )
 
 // SyncStatus represents the overall sync state.
@@ -115,7 +115,7 @@ func (sm *SyncManager) Stop() {
 // loadLocalStates initializes CRDT states from the local database.
 func (sm *SyncManager) loadLocalStates() error {
 	// Try to load persisted states
-	statePath := filepath.Join(sm.workspaceDir, ".cloudos", "sync_state.json")
+	statePath := filepath.Join(sm.workspaceDir, ".uniteos", "sync_state.json")
 	if data, err := os.ReadFile(statePath); err == nil {
 		var states map[string]*FileState
 		if err := json.Unmarshal(data, &states); err == nil {
@@ -404,7 +404,7 @@ func (sm *SyncManager) saveStates() {
 		return
 	}
 
-	statePath := filepath.Join(sm.workspaceDir, ".cloudos", "sync_state.json")
+	statePath := filepath.Join(sm.workspaceDir, ".uniteos", "sync_state.json")
 	if err := os.WriteFile(statePath, data, 0600); err != nil {
 		sm.logger.Error("failed to save sync states", "error", err)
 	}

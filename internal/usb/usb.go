@@ -1,4 +1,4 @@
-// Package usb provides USB-based sync for CloudOS.
+// Package usb provides USB-based sync for UNITEos.
 // Supports two modes:
 //   1. USB Drive (sneakernet) — export/import sync bundles via flash drive
 //   2. USB Tethering — works automatically via the existing P2P sync
@@ -13,8 +13,8 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/ayushgpal/cloudos/internal/storage"
-	csync "github.com/ayushgpal/cloudos/internal/sync"
+	"github.com/ayushgpal/uniteos/internal/storage"
+	csync "github.com/ayushgpal/uniteos/internal/sync"
 )
 
 // SyncBundle is a portable sync package that can be transferred via USB drive.
@@ -69,7 +69,7 @@ func (u *USBSync) Export(targetDir string) (*ExportReport, error) {
 	start := time.Now()
 
 	// Create bundle directory
-	bundleDir := filepath.Join(targetDir, fmt.Sprintf("cloudos-sync-%s", u.deviceID[:8]))
+	bundleDir := filepath.Join(targetDir, fmt.Sprintf("uniteos-sync-%s", u.deviceID[:8]))
 	os.MkdirAll(bundleDir, 0755)
 	filesDir := filepath.Join(bundleDir, "files")
 	os.MkdirAll(filesDir, 0755)
@@ -148,7 +148,7 @@ func (u *USBSync) Import(bundleDir string) (*ImportReport, error) {
 	manifestPath := filepath.Join(bundleDir, "manifest.json")
 	manifestData, err := os.ReadFile(manifestPath)
 	if err != nil {
-		return nil, fmt.Errorf("read manifest: %w (is this a CloudOS sync bundle?)", err)
+		return nil, fmt.Errorf("read manifest: %w (is this a UNITEos sync bundle?)", err)
 	}
 
 	var bundle SyncBundle

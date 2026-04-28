@@ -1,4 +1,4 @@
-// CloudOS Dashboard — Client Application
+// UNITEos Dashboard — Client Application
 // Connects to the local REST API and renders the dashboard UI
 
 const API_BASE = '';  // Same origin
@@ -164,7 +164,7 @@ async function loadSync() {
         peerListContainer.innerHTML = `<div class="empty-state">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
             <p>No peers connected</p>
-            <span class="text-muted">Run CloudOS mobile app on another device</span>
+            <span class="text-muted">Run UNITEos mobile app on another device</span>
         </div>`;
     } else {
         peerListContainer.innerHTML = health.peer_list.map(p => `
@@ -391,7 +391,7 @@ window.handleSystemEntryClick = async function(path, isDir) {
             body: JSON.stringify({ path: path }),
         });
         if (res) {
-            showToast('File added to CloudOS', 'success');
+            showToast('File added to UNITEos', 'success');
             document.getElementById('systemBrowserModal').classList.add('hidden');
             loadFiles();
         } else {
@@ -514,7 +514,7 @@ document.getElementById('btnSendAiMessage')?.addEventListener('click', async () 
         log.innerHTML += `
             <div class="event-item" style="border:none; padding: 10px; background: rgba(99, 102, 241, 0.1); border-radius: 12px; align-self: flex-start; max-width: 80%;">
                 <div class="event-details">
-                    <span class="event-source" style="color: var(--accent-indigo);">CloudOS AI</span>
+                    <span class="event-source" style="color: var(--accent-indigo);">UNITEos AI</span>
                     <div class="event-data" style="margin-top: 4px; font-size: 13px;">${escapeHtml(data.reply || 'No response')}</div>
                 </div>
             </div>

@@ -11,18 +11,18 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (_) => SyncProvider()),
       ],
-      child: const CloudOSApp(),
+      child: const UNITEosApp(),
     ),
   );
 }
 
-class CloudOSApp extends StatelessWidget {
-  const CloudOSApp({super.key});
+class UNITEosApp extends StatelessWidget {
+  const UNITEosApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'CloudOS Mobile',
+      title: 'UNITEos Mobile',
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         useMaterial3: true,

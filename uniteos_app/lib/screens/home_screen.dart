@@ -30,7 +30,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('☁ CloudOS', style: TextStyle(fontWeight: FontWeight.bold)),
+        title: const Text('☁ UNITEos', style: TextStyle(fontWeight: FontWeight.bold)),
         centerTitle: true,
         actions: [
           Icon(

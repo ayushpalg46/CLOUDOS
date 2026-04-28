@@ -1,4 +1,4 @@
-module github.com/ayushgpal/cloudos
+module github.com/ayushgpal/uniteos
 
 go 1.26.1
 

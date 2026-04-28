@@ -106,7 +106,7 @@ class _AiTabState extends State<AiTab> {
                 child: TextField(
                   controller: _controller,
                   decoration: InputDecoration(
-                    hintText: "Ask CloudOS AI...",
+                    hintText: "Ask UNITEos AI...",
                     filled: true,
                     fillColor: Theme.of(context).cardColor,
                     border: OutlineInputBorder(

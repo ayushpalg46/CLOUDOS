@@ -1,4 +1,4 @@
-// Package watcher provides real-time file system monitoring for CloudOS.
+// Package watcher provides real-time file system monitoring for UNITEos.
 // It watches tracked directories for changes and emits events through the event bus.
 package watcher
 
@@ -10,8 +10,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ayushgpal/cloudos/internal/core"
-	"github.com/ayushgpal/cloudos/internal/storage"
+	"github.com/ayushgpal/uniteos/internal/core"
+	"github.com/ayushgpal/uniteos/internal/storage"
 	"github.com/fsnotify/fsnotify"
 )
 
@@ -59,7 +59,7 @@ func (w *Watcher) Start() error {
 			return nil
 		}
 		if info.IsDir() {
-			if info.Name() == ".cloudos" || strings.HasPrefix(info.Name(), ".") {
+			if info.Name() == ".uniteos" || strings.HasPrefix(info.Name(), ".") {
 				return filepath.SkipDir
 			}
 			return w.fsWatcher.Add(path)
@@ -112,9 +112,9 @@ func (w *Watcher) eventLoop() {
 func (w *Watcher) handleFSEvent(event fsnotify.Event) {
 	path := event.Name
 
-	// Skip .cloudos internal directory
+	// Skip .uniteos internal directory
 	rel, _ := filepath.Rel(w.workspaceDir, path)
-	if strings.HasPrefix(rel, ".cloudos") || strings.HasPrefix(filepath.Base(path), ".") {
+	if strings.HasPrefix(rel, ".uniteos") || strings.HasPrefix(filepath.Base(path), ".") {
 		return
 	}
 

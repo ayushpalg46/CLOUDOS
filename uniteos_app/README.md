@@ -1,4 +1,4 @@
-# cloudos_app
+# uniteos_app
 
 A new Flutter project.
 

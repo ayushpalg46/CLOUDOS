@@ -1,4 +1,4 @@
-// Package storage provides the storage layer for CloudOS.
+// Package storage provides the storage layer for UNITEos.
 // It handles structured data (SQLite), blob storage, metadata indexing,
 // and deduplication.
 package storage
@@ -12,7 +12,7 @@ import (
 	_ "modernc.org/sqlite"
 )
 
-// DB wraps the SQLite database with CloudOS-specific operations.
+// DB wraps the SQLite database with UNITEos-specific operations.
 type DB struct {
 	db     *sql.DB
 	logger *slog.Logger
@@ -167,7 +167,7 @@ func (d *DB) migrate() error {
 	return tx.Commit()
 }
 
-// TrackedFile represents a file being tracked by CloudOS.
+// TrackedFile represents a file being tracked by UNITEos.
 type TrackedFile struct {
 	ID           int64     `json:"id"`
 	Path         string    `json:"path"`

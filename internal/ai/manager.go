@@ -9,11 +9,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ayushgpal/cloudos/internal/core"
-	"github.com/ayushgpal/cloudos/internal/storage"
+	"github.com/ayushgpal/uniteos/internal/core"
+	"github.com/ayushgpal/uniteos/internal/storage"
 )
 
-// Manager is the central AI orchestrator for CloudOS.
+// Manager is the central AI orchestrator for UNITEos.
 // It coordinates embeddings, semantic search, smart tagging,
 // auto-organization, and context-aware suggestions.
 type Manager struct {

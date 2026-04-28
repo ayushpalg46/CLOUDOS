@@ -9,7 +9,7 @@ import (
 	"strings"
 	"time"
 
-	"github.com/ayushgpal/cloudos/internal/core"
+	"github.com/ayushgpal/uniteos/internal/core"
 )
 
 // Store is the unified storage manager that combines SQLite, BlobStore, and events.
@@ -136,8 +136,8 @@ func (s *Store) TrackDirectory(dirPath string) (int, error) {
 		if err != nil {
 			return nil // Skip errors
 		}
-		// Skip .cloudos directory
-		if info.IsDir() && info.Name() == ".cloudos" {
+		// Skip .uniteos directory
+		if info.IsDir() && info.Name() == ".uniteos" {
 			return filepath.SkipDir
 		}
 		// Skip hidden files/dirs

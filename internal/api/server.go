@@ -1,4 +1,4 @@
-// Package api provides the local REST API server for CloudOS.
+// Package api provides the local REST API server for UNITEos.
 package api
 
 import (
@@ -17,13 +17,13 @@ import (
 	"strings"
 	"time"
 
-	"github.com/ayushgpal/cloudos/internal/ai"
-	"github.com/ayushgpal/cloudos/internal/core"
-	"github.com/ayushgpal/cloudos/internal/dashboard"
-	"github.com/ayushgpal/cloudos/internal/integrity"
-	"github.com/ayushgpal/cloudos/internal/plugins"
-	"github.com/ayushgpal/cloudos/internal/storage"
-	csync "github.com/ayushgpal/cloudos/internal/sync"
+	"github.com/ayushgpal/uniteos/internal/ai"
+	"github.com/ayushgpal/uniteos/internal/core"
+	"github.com/ayushgpal/uniteos/internal/dashboard"
+	"github.com/ayushgpal/uniteos/internal/integrity"
+	"github.com/ayushgpal/uniteos/internal/plugins"
+	"github.com/ayushgpal/uniteos/internal/storage"
+	csync "github.com/ayushgpal/uniteos/internal/sync"
 )
 
 // Server is the local REST API server with embedded dashboard.
@@ -317,7 +317,7 @@ func (s *Server) handleUpload(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Tell CloudOS to track it
+	// Tell UNITEos to track it
 	if err := s.store.TrackFile(destPath); err != nil {
 		s.respondError(w, 500, "failed to track file: "+err.Error())
 		return
@@ -333,7 +333,7 @@ func (s *Server) handleDownloadAndroid(w http.ResponseWriter, r *http.Request) {
 		s.respondError(w, 404, "Android binary not compiled yet")
 		return
 	}
-	w.Header().Set("Content-Disposition", "attachment; filename=cloudos.apk")
+	w.Header().Set("Content-Disposition", "attachment; filename=uniteos.apk")
 	w.Header().Set("Content-Type", "application/vnd.android.package-archive")
 	http.ServeFile(w, r, binaryPath)
 }
@@ -708,7 +708,7 @@ func (s *Server) executeAIActions(reply string) string {
 }
 
 func callRealAI(query string, context string) string {
-	prompt := fmt.Sprintf(`You are the CloudOS AI Assistant. You help manage a local, secure personal cloud.
+	prompt := fmt.Sprintf(`You are the UNITEos AI Assistant. You help manage a local, secure personal cloud.
 If the user asks you to create, delete, or move files/folders, you MUST append EXACTLY ONE of these tags to the end of your response:
 [CREATE_FOLDER: folder_name]
 [CREATE_FILE: file_name | file_content]
@@ -811,11 +811,11 @@ func (s *Server) handleAIChat(w http.ResponseWriter, r *http.Request) {
 		if strings.Contains(query, "analyze") {
 			reply = "I couldn't connect to the Real AI, but here is my local analysis:\n\n" + context
 		} else if query == "hi" || query == "hello" || query == "hey" || strings.HasPrefix(query, "hello ") {
-			reply = "Hello! I am your secure CloudOS Assistant. To enable my advanced brain, please run a local Ollama server or set the GEMINI_API_KEY environment variable!"
+			reply = "Hello! I am your secure UNITEos Assistant. To enable my advanced brain, please run a local Ollama server or set the GEMINI_API_KEY environment variable!"
 		} else if strings.Contains(query, "how are you") {
-			reply = "I'm running perfectly! Your local CloudOS node is online, secure, and ready to assist."
+			reply = "I'm running perfectly! Your local UNITEos node is online, secure, and ready to assist."
 		} else if strings.Contains(query, "who are you") {
-			reply = "I am the CloudOS Local AI. Currently running in fallback mode."
+			reply = "I am the UNITEos Local AI. Currently running in fallback mode."
 		} else {
 			reply = "Here is what I found in your files:\n\n" + context + "\n\n(Note: To chat with me naturally, please run Ollama locally or set the GEMINI_API_KEY)."
 		}

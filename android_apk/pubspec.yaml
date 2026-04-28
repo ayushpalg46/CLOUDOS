@@ -1,5 +1,5 @@
-name: cloudos_mobile
-description: A modern Flutter client for CloudOS
+name: uniteos_mobile
+description: A modern Flutter client for UNITEos
 publish_to: 'none'
 version: 1.0.0+1
 

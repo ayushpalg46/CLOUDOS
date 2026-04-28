@@ -31,7 +31,7 @@ class _SettingsTabState extends State<SettingsTab> {
           ),
           const SizedBox(height: 16),
           const Text(
-            "Enter the IP and Port of your Windows CloudOS server to enable real-time synchronization.",
+            "Enter the IP and Port of your Windows UNITEos server to enable real-time synchronization.",
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 32),

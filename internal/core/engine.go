@@ -12,7 +12,7 @@ import (
 	"time"
 )
 
-// Engine is the central orchestrator for the CloudOS runtime.
+// Engine is the central orchestrator for the UNITEos runtime.
 // It manages the lifecycle of all subsystems.
 type Engine struct {
 	Config    *Config
@@ -24,7 +24,7 @@ type Engine struct {
 	ollamaCmd *exec.Cmd
 }
 
-// NewEngine creates and initializes a new CloudOS engine.
+// NewEngine creates and initializes a new UNITEos engine.
 func NewEngine(workspaceDir string) (*Engine, error) {
 	// Resolve absolute path
 	absPath, err := filepath.Abs(workspaceDir)
@@ -101,7 +101,7 @@ func NewEngine(workspaceDir string) (*Engine, error) {
 		return nil, fmt.Errorf("failed to save config: %w", err)
 	}
 
-	logger.Info("CloudOS engine initialized",
+	logger.Info("UNITEos engine initialized",
 		"workspace", absPath,
 		"device_id", config.DeviceID,
 		"device_name", config.DeviceName,
@@ -114,15 +114,15 @@ func NewEngine(workspaceDir string) (*Engine, error) {
 // Start begins the engine's runtime operations.
 func (e *Engine) Start() error {
 	e.started = time.Now()
-	e.Logger.Info("CloudOS engine starting", "version", Version)
+	e.Logger.Info("UNITEos engine starting", "version", Version)
 
-	// User requested that CloudOS completely owns the AI process lifecycle
+	// User requested that UNITEos completely owns the AI process lifecycle
 	// 1. Kill any existing Ollama background processes
 	e.Logger.Info("Taking full control of AI processes...")
 	exec.Command("taskkill", "/F", "/IM", "ollama.exe").Run()
 	exec.Command("taskkill", "/F", "/IM", "ollama_llama_server.exe").Run()
 
-	// 2. Start Ollama exclusively as a child of CloudOS
+	// 2. Start Ollama exclusively as a child of UNITEos
 	e.ollamaCmd = exec.Command("ollama", "serve")
 	// Hide the terminal window on Windows if possible
 	if err := e.ollamaCmd.Start(); err != nil {
@@ -141,11 +141,11 @@ func (e *Engine) Start() error {
 
 // Stop gracefully shuts down the engine.
 func (e *Engine) Stop() {
-	e.Logger.Info("CloudOS engine stopping",
+	e.Logger.Info("UNITEos engine stopping",
 		"uptime", time.Since(e.started).String(),
 	)
 
-	// Kill the child AI process so it dies when CloudOS dies
+	// Kill the child AI process so it dies when UNITEos dies
 	if e.ollamaCmd != nil && e.ollamaCmd.Process != nil {
 		e.Logger.Info("Shutting down embedded AI server...")
 		e.ollamaCmd.Process.Kill()
@@ -173,9 +173,9 @@ func (e *Engine) Uptime() time.Duration {
 	return time.Since(e.started)
 }
 
-// IsInitialized checks if a CloudOS workspace has been initialized at the given path.
+// IsInitialized checks if a UNITEos workspace has been initialized at the given path.
 func IsInitialized(workspaceDir string) bool {
-	dataDir := filepath.Join(workspaceDir, ".cloudos")
+	dataDir := filepath.Join(workspaceDir, ".uniteos")
 	configPath := filepath.Join(dataDir, ConfigFileName)
 	_, err := os.Stat(configPath)
 	return err == nil

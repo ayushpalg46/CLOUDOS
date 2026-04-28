@@ -1,4 +1,4 @@
-// Package plugins provides an extensible plugin system for CloudOS.
+// Package plugins provides an extensible plugin system for UNITEos.
 // Plugins can hook into the event system and extend functionality.
 package plugins
 
@@ -10,7 +10,7 @@ import (
 	"path/filepath"
 	"sync"
 
-	"github.com/ayushgpal/cloudos/internal/core"
+	"github.com/ayushgpal/uniteos/internal/core"
 )
 
 // PluginState represents the lifecycle state of a plugin.
@@ -231,7 +231,7 @@ func RegisterAutoVersionPlugin(pm *PluginManager) {
 			Name:        "auto-version",
 			Version:     "1.0.0",
 			Description: "Automatically creates file versions when changes are detected",
-			Author:      "CloudOS",
+			Author:      "UNITEos",
 			Events:      []string{string(core.EventFileModified)},
 		},
 		map[string]PluginHook{
@@ -262,7 +262,7 @@ func RegisterAuditLogPlugin(pm *PluginManager) {
 			Name:        "audit-log",
 			Version:     "1.0.0",
 			Description: "Logs all file operations for compliance and auditing",
-			Author:      "CloudOS",
+			Author:      "UNITEos",
 			Events: []string{
 				string(core.EventFileCreated),
 				string(core.EventFileModified),

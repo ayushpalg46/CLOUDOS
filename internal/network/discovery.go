@@ -1,4 +1,4 @@
-// Package network provides LAN discovery and P2P communication for CloudOS.
+// Package network provides LAN discovery and P2P communication for UNITEos.
 package network
 
 import (
@@ -10,11 +10,11 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ayushgpal/cloudos/internal/core"
+	"github.com/ayushgpal/uniteos/internal/core"
 )
 
 const (
-	// CloudOS discovery beacon port (UDP broadcast)
+	// UNITEos discovery beacon port (UDP broadcast)
 	discoveryPort = 7891
 	// Beacon interval
 	beaconInterval = 10 * time.Second

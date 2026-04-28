@@ -1,4 +1,4 @@
-# CloudOS — Local-First Personal Cloud OS
+# UNITEos — Local-First Personal Cloud OS
 
 ```
    _____ _                 _  ____   _____
@@ -29,27 +29,27 @@ Zero cloud dependency. Offline-first. AI-powered. Fully local.
 cd personal_cloud_os
 
 # Build the binary
-go build -o cloudos.exe ./cmd/cloudos       # Windows
-go build -o cloudos ./cmd/cloudos            # Linux/macOS
+go build -o uniteos.exe ./cmd/uniteos       # Windows
+go build -o uniteos ./cmd/uniteos            # Linux/macOS
 ```
 
 > **Windows Note:** If your organization has an Application Control policy that blocks
 > new executables, build to your user profile directory instead:
 > ```powershell
-> go build -o "$env:USERPROFILE\cloudos.exe" .\cmd\cloudos
+> go build -o "$env:USERPROFILE\uniteos.exe" .\cmd\uniteos
 > ```
 
 ### 2. Initialize a Workspace
 
 ```bash
-# Navigate to the folder you want CloudOS to manage
+# Navigate to the folder you want UNITEos to manage
 cd ~/Documents/my-workspace
 
-# Initialize CloudOS
-cloudos init
+# Initialize UNITEos
+uniteos init
 ```
 
-This creates a `.cloudos` directory with:
+This creates a `.uniteos` directory with:
 - SQLite database for metadata
 - Content-addressable blob store
 - Unique device identity (auto-generated)
@@ -58,23 +58,23 @@ This creates a `.cloudos` directory with:
 
 ```bash
 # Track everything in the current directory
-cloudos add .
+uniteos add .
 
 # Or track specific files/folders
-cloudos add ./documents
-cloudos add ./projects/my-app
+uniteos add ./documents
+uniteos add ./projects/my-app
 ```
 
 ### 4. Check Status
 
 ```bash
-cloudos status
+uniteos status
 ```
 
 ### 5. Open the Dashboard
 
 ```bash
-cloudos serve
+uniteos serve
 # Open http://localhost:7890 in your browser
 ```
 
@@ -86,57 +86,57 @@ cloudos serve
 
 | Command | Description |
 |---------|-------------|
-| `cloudos init` | Initialize a new workspace |
-| `cloudos add <path>` | Track a file or directory |
-| `cloudos status` | Show file status (unchanged/modified/deleted) |
-| `cloudos snapshot [name]` | Create a point-in-time backup |
-| `cloudos history` | Show snapshot history |
-| `cloudos rollback <snap-id>` | Restore a previous snapshot |
-| `cloudos search <query>` | Search files by name |
-| `cloudos encrypt <path>` | Encrypt a file (AES-256-GCM) |
-| `cloudos decrypt <path>` | Decrypt a file |
-| `cloudos config` | Show configuration |
-| `cloudos info` | System information & stats |
+| `uniteos init` | Initialize a new workspace |
+| `uniteos add <path>` | Track a file or directory |
+| `uniteos status` | Show file status (unchanged/modified/deleted) |
+| `uniteos snapshot [name]` | Create a point-in-time backup |
+| `uniteos history` | Show snapshot history |
+| `uniteos rollback <snap-id>` | Restore a previous snapshot |
+| `uniteos search <query>` | Search files by name |
+| `uniteos encrypt <path>` | Encrypt a file (AES-256-GCM) |
+| `uniteos decrypt <path>` | Decrypt a file |
+| `uniteos config` | Show configuration |
+| `uniteos info` | System information & stats |
 
 ### Multi-Device Sync (Phase 2)
 
 | Command | Description |
 |---------|-------------|
-| `cloudos watch` | Watch for real-time file changes |
-| `cloudos sync` | Start full sync daemon (watcher + discovery + P2P) |
-| `cloudos peers` | Discover other CloudOS devices on your LAN |
-| `cloudos conflicts` | View and resolve sync conflicts |
+| `uniteos watch` | Watch for real-time file changes |
+| `uniteos sync` | Start full sync daemon (watcher + discovery + P2P) |
+| `uniteos peers` | Discover other UNITEos devices on your LAN |
+| `uniteos conflicts` | View and resolve sync conflicts |
 
 ### Dashboard & Security (Phase 3)
 
 | Command | Description |
 |---------|-------------|
-| `cloudos serve` | Start API server + web dashboard |
-| `cloudos dashboard` | Alias for serve |
-| `cloudos verify` | Verify integrity of all tracked files |
-| `cloudos plugins` | List registered plugins |
+| `uniteos serve` | Start API server + web dashboard |
+| `uniteos dashboard` | Alias for serve |
+| `uniteos verify` | Verify integrity of all tracked files |
+| `uniteos plugins` | List registered plugins |
 
 ### AI Intelligence (Phase 4)
 
 | Command | Description |
 |---------|-------------|
-| `cloudos ai-index` | Build AI search index (TF-IDF embeddings) |
-| `cloudos ai-search <query>` | Semantic search across files |
-| `cloudos ai-analyze` | AI workspace analysis with insights |
+| `uniteos ai-index` | Build AI search index (TF-IDF embeddings) |
+| `uniteos ai-search <query>` | Semantic search across files |
+| `uniteos ai-analyze` | AI workspace analysis with insights |
 
 ### USB Sync
 
 | Command | Description |
 |---------|-------------|
-| `cloudos usb-export <path>` | Export sync bundle to USB drive / folder |
-| `cloudos usb-import <path>` | Import sync bundle from USB drive / folder |
-| `cloudos usb-scan <path>` | Scan USB drive for available sync bundles |
+| `uniteos usb-export <path>` | Export sync bundle to USB drive / folder |
+| `uniteos usb-import <path>` | Import sync bundle from USB drive / folder |
+| `uniteos usb-scan <path>` | Scan USB drive for available sync bundles |
 
 ---
 
 ## Connecting Multiple Devices
 
-CloudOS supports automatic multi-device sync over your local network (LAN).
+UNITEos supports automatic multi-device sync over your local network (LAN).
 All devices must be on the **same WiFi/network**.
 
 ### Step 1: Set Up Each Device
@@ -144,21 +144,21 @@ All devices must be on the **same WiFi/network**.
 On **every device** you want to sync:
 
 ```bash
-# Build CloudOS (or copy the binary)
-go build -o cloudos ./cmd/cloudos
+# Build UNITEos (or copy the binary)
+go build -o uniteos ./cmd/uniteos
 
 # Navigate to the folder you want to sync
 cd ~/shared-workspace
 
 # Initialize
-cloudos init
-cloudos add .
+uniteos init
+uniteos add .
 ```
 
 ### Step 2: Start Sync on Each Device
 
 ```bash
-cloudos sync
+uniteos sync
 ```
 
 This starts:
@@ -170,7 +170,7 @@ This starts:
 ### Step 3: Verify Peer Discovery
 
 ```bash
-cloudos peers
+uniteos peers
 ```
 
 You should see other devices listed with their Device ID, name, and IP.
@@ -187,25 +187,25 @@ This is the most secure way to sync, as it never touches a network.
 
 1.  **Export from Device A:**
     ```bash
-    cloudos usb-export D:\  # Exports your workspace to USB drive D:
+    uniteos usb-export D:\  # Exports your workspace to USB drive D:
     ```
 2.  **Plug USB into Device B.**
 3.  **Scan for Bundles:**
     ```bash
-    cloudos usb-scan E:\    # Finds bundles on the second device's USB port
+    uniteos usb-scan E:\    # Finds bundles on the second device's USB port
     ```
 4.  **Import to Device B:**
     ```bash
-    cloudos usb-import E:\cloudos-sync-a74c0f6b
+    uniteos usb-import E:\uniteos-sync-a74c0f6b
     ```
 
 ### Mode 2: USB Tethering (Network over USB)
 
 If you connect your phone to your PC via USB and enable "USB Tethering", your phone acts as a network adapter.
-CloudOS will detect the new network interface automatically. Just run:
+UNITEos will detect the new network interface automatically. Just run:
 
 ```bash
-cloudos sync
+uniteos sync
 ```
 
 It will work exactly like WiFi but over the USB cable.
@@ -219,7 +219,7 @@ It will work exactly like WiFi but over the USB cable.
 | TCP | 7890 | Dashboard / REST API |
 
 > **Firewall:** You may need to allow these ports through your firewall.
-> On Windows, you'll get a prompt when you first run `cloudos sync`.
+> On Windows, you'll get a prompt when you first run `uniteos sync`.
 
 ### Supported Platforms
 
@@ -237,22 +237,22 @@ It will work exactly like WiFi but over the USB cable.
 # Build for Linux (from Windows)
 set GOOS=linux
 set GOARCH=amd64
-go build -o cloudos-linux ./cmd/cloudos
+go build -o uniteos-linux ./cmd/uniteos
 
 # Build for macOS
 set GOOS=darwin
 set GOARCH=arm64
-go build -o cloudos-macos ./cmd/cloudos
+go build -o uniteos-macos ./cmd/uniteos
 
 # Build for Raspberry Pi
 set GOOS=linux
 set GOARCH=arm
-go build -o cloudos-rpi ./cmd/cloudos
+go build -o uniteos-rpi ./cmd/uniteos
 
 # Build for Android (Termux)
 set GOOS=android
 set GOARCH=arm64
-go build -o cloudos-android ./cmd/cloudos
+go build -o uniteos-android ./cmd/uniteos
 ```
 
 ---
@@ -284,7 +284,7 @@ All endpoints are available at `http://localhost:7890/api/`
 ## Architecture
 
 ```
-cloudos.exe  (15.7 MB self-contained binary)
+uniteos.exe  (15.7 MB self-contained binary)
 ├── Core Engine (config, events, lifecycle)
 ├── Storage (SQLite + content-addressable blobs)
 ├── Crypto (AES-256-GCM + Argon2id key derivation)

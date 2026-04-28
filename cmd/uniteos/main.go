@@ -1,4 +1,4 @@
-// CloudOS — Local-First Personal Cloud OS
+// UNITEos — Local-First Personal Cloud OS
 //
 // A privacy-first, decentralized, cross-device computing ecosystem.
 // All data is created, stored, and processed locally by default.
@@ -19,18 +19,18 @@ import (
 	"text/tabwriter"
 	"time"
 
-	"github.com/ayushgpal/cloudos/internal/ai"
-	"github.com/ayushgpal/cloudos/internal/api"
-	"github.com/ayushgpal/cloudos/internal/core"
-	"github.com/ayushgpal/cloudos/internal/crypto"
-	"github.com/ayushgpal/cloudos/internal/gui"
-	"github.com/ayushgpal/cloudos/internal/integrity"
-	"github.com/ayushgpal/cloudos/internal/network"
-	"github.com/ayushgpal/cloudos/internal/plugins"
-	"github.com/ayushgpal/cloudos/internal/storage"
-	csync "github.com/ayushgpal/cloudos/internal/sync"
-	"github.com/ayushgpal/cloudos/internal/usb"
-	"github.com/ayushgpal/cloudos/internal/watcher"
+	"github.com/ayushgpal/uniteos/internal/ai"
+	"github.com/ayushgpal/uniteos/internal/api"
+	"github.com/ayushgpal/uniteos/internal/core"
+	"github.com/ayushgpal/uniteos/internal/crypto"
+	"github.com/ayushgpal/uniteos/internal/gui"
+	"github.com/ayushgpal/uniteos/internal/integrity"
+	"github.com/ayushgpal/uniteos/internal/network"
+	"github.com/ayushgpal/uniteos/internal/plugins"
+	"github.com/ayushgpal/uniteos/internal/storage"
+	csync "github.com/ayushgpal/uniteos/internal/sync"
+	"github.com/ayushgpal/uniteos/internal/usb"
+	"github.com/ayushgpal/uniteos/internal/watcher"
 )
 
 const banner = `
@@ -107,7 +107,7 @@ func main() {
 	case "help", "--help", "-h":
 		printUsage()
 	case "version", "--version", "-v":
-		fmt.Printf("CloudOS v%s\n", core.Version)
+		fmt.Printf("UNITEos v%s\n", core.Version)
 	default:
 		fmt.Fprintf(os.Stderr, "Unknown command: %s\n\n", command)
 		printUsage()
@@ -119,10 +119,10 @@ func printUsage() {
 	fmt.Printf(banner, core.Version)
 	fmt.Print(`
 USAGE:
-  cloudos <command> [arguments]
+  uniteos <command> [arguments]
 
 COMMANDS:
-  init                  Initialize a new CloudOS workspace
+  init                  Initialize a new UNITEos workspace
   status                Show tracked files and their status
   add <path>            Track a file or directory
   snapshot [name]       Create a version snapshot
@@ -160,14 +160,14 @@ COMMANDS:
   usb-scan <path>       Scan USB drive for available sync bundles
 
 EXAMPLES:
-  cloudos init
-  cloudos add ./documents
-  cloudos snapshot "Weekly backup"
-  cloudos search "report"
-  cloudos serve
-  cloudos watch
-  cloudos sync
-  cloudos peers
+  uniteos init
+  uniteos add ./documents
+  uniteos snapshot "Weekly backup"
+  uniteos search "report"
+  uniteos serve
+  uniteos watch
+  uniteos sync
+  uniteos peers
 `)
 }
 
@@ -183,7 +183,7 @@ func getWorkspaceDir() string {
 func requireInit() string {
 	dir := getWorkspaceDir()
 	if !core.IsInitialized(dir) {
-		fmt.Fprintf(os.Stderr, "Error: not a CloudOS workspace. Run 'cloudos init' first.\n")
+		fmt.Fprintf(os.Stderr, "Error: not a UNITEos workspace. Run 'uniteos init' first.\n")
 		os.Exit(1)
 	}
 	return dir
@@ -212,7 +212,7 @@ func cmdInit() {
 	dir := getWorkspaceDir()
 
 	if core.IsInitialized(dir) {
-		fmt.Println("⚠  CloudOS workspace already initialized here.")
+		fmt.Println("⚠  UNITEos workspace already initialized here.")
 		return
 	}
 
@@ -224,7 +224,7 @@ func cmdInit() {
 	fmt.Printf("📁 Data directory: %s\n", engine.Config.DataDir)
 	fmt.Printf("🔑 Device ID: %s\n", engine.Config.DeviceID)
 	fmt.Printf("💻 Device Name: %s\n", engine.Config.DeviceName)
-	fmt.Println("\nRun 'cloudos add .' to start tracking files.")
+	fmt.Println("\nRun 'uniteos add .' to start tracking files.")
 }
 
 func cmdStatus() {
@@ -239,7 +239,7 @@ func cmdStatus() {
 	}
 
 	if len(statuses) == 0 {
-		fmt.Println("No tracked files. Run 'cloudos add <path>' to track files.")
+		fmt.Println("No tracked files. Run 'uniteos add <path>' to track files.")
 		return
 	}
 
@@ -274,7 +274,7 @@ func cmdStatus() {
 
 func cmdAdd() {
 	if len(os.Args) < 3 {
-		fmt.Fprintln(os.Stderr, "Usage: cloudos add <path>")
+		fmt.Fprintln(os.Stderr, "Usage: uniteos add <path>")
 		os.Exit(1)
 	}
 
@@ -400,7 +400,7 @@ func cmdHistory() {
 	}
 
 	if len(snapshots) == 0 {
-		fmt.Println("No snapshots yet. Run 'cloudos snapshot' to create one.")
+		fmt.Println("No snapshots yet. Run 'uniteos snapshot' to create one.")
 		return
 	}
 
@@ -421,7 +421,7 @@ func cmdHistory() {
 
 func cmdRollback() {
 	if len(os.Args) < 3 {
-		fmt.Fprintln(os.Stderr, "Usage: cloudos rollback <snapshot-id>")
+		fmt.Fprintln(os.Stderr, "Usage: uniteos rollback <snapshot-id>")
 		os.Exit(1)
 	}
 
@@ -457,7 +457,7 @@ func cmdRollback() {
 
 func cmdEncrypt() {
 	if len(os.Args) < 3 {
-		fmt.Fprintln(os.Stderr, "Usage: cloudos encrypt <path>")
+		fmt.Fprintln(os.Stderr, "Usage: uniteos encrypt <path>")
 		os.Exit(1)
 	}
 
@@ -504,7 +504,7 @@ func cmdEncrypt() {
 
 func cmdDecrypt() {
 	if len(os.Args) < 3 {
-		fmt.Fprintln(os.Stderr, "Usage: cloudos decrypt <path>")
+		fmt.Fprintln(os.Stderr, "Usage: uniteos decrypt <path>")
 		os.Exit(1)
 	}
 
@@ -521,7 +521,7 @@ func cmdDecrypt() {
 	}
 
 	if !km.IsInitialized() {
-		fmt.Fprintln(os.Stderr, "Error: encryption not set up. Run 'cloudos encrypt' first.")
+		fmt.Fprintln(os.Stderr, "Error: encryption not set up. Run 'uniteos encrypt' first.")
 		os.Exit(1)
 	}
 
@@ -550,7 +550,7 @@ func cmdDecrypt() {
 
 func cmdSearch() {
 	if len(os.Args) < 3 {
-		fmt.Fprintln(os.Stderr, "Usage: cloudos search <query>")
+		fmt.Fprintln(os.Stderr, "Usage: uniteos search <query>")
 		os.Exit(1)
 	}
 
@@ -587,7 +587,7 @@ func cmdConfig() {
 	engine, _ := initEngine(dir)
 
 	data, _ := json.MarshalIndent(engine.Config, "", "  ")
-	fmt.Println("⚙  CloudOS Configuration:")
+	fmt.Println("⚙  UNITEos Configuration:")
 	fmt.Println(string(data))
 }
 
@@ -751,7 +751,7 @@ func cmdGUI() {
 		if err != nil {
 			home = "."
 		}
-		defaultDir := filepath.Join(home, "CloudOS")
+		defaultDir := filepath.Join(home, "UNITEos")
 		
 		if !core.IsInitialized(defaultDir) {
 			os.MkdirAll(defaultDir, 0755)
@@ -827,7 +827,7 @@ func cmdGUI() {
 
 	// Start native window directly
 	gui.StartWindow(gui.Config{
-		Title:  "CloudOS — Personal Cloud",
+		Title:  "UNITEos — Personal Cloud",
 		URL:    url,
 		Width:  1200,
 		Height: 800,
@@ -913,7 +913,7 @@ func cmdVerify() {
 		report.Passed, report.Failed, report.Errors, report.Duration)
 
 	if report.Failed > 0 {
-		fmt.Println("\n⚠  Some files have been modified outside CloudOS tracking!")
+		fmt.Println("\n⚠  Some files have been modified outside UNITEos tracking!")
 	}
 }
 
@@ -946,7 +946,7 @@ func cmdPlugins() {
 
 func cmdAISearch() {
 	if len(os.Args) < 3 {
-		fmt.Fprintln(os.Stderr, "Usage: cloudos ai-search <query>")
+		fmt.Fprintln(os.Stderr, "Usage: uniteos ai-search <query>")
 		os.Exit(1)
 	}
 
@@ -1096,12 +1096,12 @@ func cmdAIAnalyze() {
 
 func cmdUSBExport() {
 	if len(os.Args) < 3 {
-		fmt.Fprintln(os.Stderr, "Usage: cloudos usb-export <target-path>")
+		fmt.Fprintln(os.Stderr, "Usage: uniteos usb-export <target-path>")
 		fmt.Fprintln(os.Stderr, "")
 		fmt.Fprintln(os.Stderr, "Examples:")
-		fmt.Fprintln(os.Stderr, "  cloudos usb-export D:\\              # Export to USB drive D:")
-		fmt.Fprintln(os.Stderr, "  cloudos usb-export E:\\CloudSync     # Export to specific folder")
-		fmt.Fprintln(os.Stderr, "  cloudos usb-export ./sync-bundle    # Export to local folder")
+		fmt.Fprintln(os.Stderr, "  uniteos usb-export D:\\              # Export to USB drive D:")
+		fmt.Fprintln(os.Stderr, "  uniteos usb-export E:\\CloudSync     # Export to specific folder")
+		fmt.Fprintln(os.Stderr, "  uniteos usb-export ./sync-bundle    # Export to local folder")
 		os.Exit(1)
 	}
 
@@ -1137,18 +1137,18 @@ func cmdUSBExport() {
 		fmt.Printf("   ⚠  Errors:    %d\n", report.Errors)
 	}
 	fmt.Println("\n📋 Next: Plug USB into another device and run:")
-	fmt.Printf("   cloudos usb-import \"%s\"\n", report.BundlePath)
+	fmt.Printf("   uniteos usb-import \"%s\"\n", report.BundlePath)
 }
 
 func cmdUSBImport() {
 	if len(os.Args) < 3 {
-		fmt.Fprintln(os.Stderr, "Usage: cloudos usb-import <bundle-path>")
+		fmt.Fprintln(os.Stderr, "Usage: uniteos usb-import <bundle-path>")
 		fmt.Fprintln(os.Stderr, "")
 		fmt.Fprintln(os.Stderr, "Examples:")
-		fmt.Fprintln(os.Stderr, "  cloudos usb-import D:\\cloudos-sync-a74c0f6b")
-		fmt.Fprintln(os.Stderr, "  cloudos usb-import E:\\CloudSync\\cloudos-sync-b82d3f9a")
+		fmt.Fprintln(os.Stderr, "  uniteos usb-import D:\\uniteos-sync-a74c0f6b")
+		fmt.Fprintln(os.Stderr, "  uniteos usb-import E:\\CloudSync\\uniteos-sync-b82d3f9a")
 		fmt.Fprintln(os.Stderr, "")
-		fmt.Fprintln(os.Stderr, "Tip: Use 'cloudos usb-scan D:\\' to find bundles on a drive")
+		fmt.Fprintln(os.Stderr, "Tip: Use 'uniteos usb-scan D:\\' to find bundles on a drive")
 		os.Exit(1)
 	}
 
@@ -1189,16 +1189,16 @@ func cmdUSBImport() {
 
 func cmdUSBScan() {
 	if len(os.Args) < 3 {
-		fmt.Fprintln(os.Stderr, "Usage: cloudos usb-scan <drive-path>")
+		fmt.Fprintln(os.Stderr, "Usage: uniteos usb-scan <drive-path>")
 		fmt.Fprintln(os.Stderr, "")
 		fmt.Fprintln(os.Stderr, "Examples:")
-		fmt.Fprintln(os.Stderr, "  cloudos usb-scan D:\\")
-		fmt.Fprintln(os.Stderr, "  cloudos usb-scan E:\\CloudSync")
+		fmt.Fprintln(os.Stderr, "  uniteos usb-scan D:\\")
+		fmt.Fprintln(os.Stderr, "  uniteos usb-scan E:\\CloudSync")
 		os.Exit(1)
 	}
 
 	drivePath := os.Args[2]
-	fmt.Printf("🔍 Scanning %s for CloudOS sync bundles...\n\n", drivePath)
+	fmt.Printf("🔍 Scanning %s for UNITEos sync bundles...\n\n", drivePath)
 
 	bundles, err := usb.ListBundles(drivePath)
 	if err != nil {
@@ -1208,7 +1208,7 @@ func cmdUSBScan() {
 
 	if len(bundles) == 0 {
 		fmt.Println("No sync bundles found.")
-		fmt.Println("\nTip: Run 'cloudos usb-export <path>' on another device first.")
+		fmt.Println("\nTip: Run 'uniteos usb-export <path>' on another device first.")
 		return
 	}
 
@@ -1227,7 +1227,7 @@ func cmdUSBScan() {
 	w.Flush()
 
 	fmt.Printf("\n%d bundle(s) found. Import with:\n", len(bundles))
-	fmt.Printf("   cloudos usb-import \"%s\"\n", bundles[0].Path)
+	fmt.Printf("   uniteos usb-import \"%s\"\n", bundles[0].Path)
 }
 
 // ── Phase 2 Commands ─────────────────────────────────────────────
@@ -1437,7 +1437,7 @@ func cmdPeers() {
 		p2pPort, engine.EventBus, engine.Logger,
 	)
 
-	fmt.Println("📡 Scanning LAN for CloudOS peers (5 seconds)...")
+	fmt.Println("📡 Scanning LAN for UNITEos peers (5 seconds)...")
 
 	if err := discovery.Start(ctx); err != nil {
 		fmt.Fprintf(os.Stderr, "Error: %v\n", err)
@@ -1450,7 +1450,7 @@ func cmdPeers() {
 	peers := discovery.GetPeers()
 	if len(peers) == 0 {
 		fmt.Println("No peers found on the local network.")
-		fmt.Println("Make sure other CloudOS instances are running 'cloudos sync'.")
+		fmt.Println("Make sure other UNITEos instances are running 'uniteos sync'.")
 		return
 	}
 
@@ -1513,7 +1513,7 @@ func cmdConflicts() {
 		}
 		fmt.Printf("\n✅ Conflict %s resolved as '%s'\n", conflictID, resolution)
 	} else {
-		fmt.Println("\nTo resolve: cloudos conflicts resolve <conflict-id> <local|remote|both>")
+		fmt.Println("\nTo resolve: uniteos conflicts resolve <conflict-id> <local|remote|both>")
 	}
 }
 

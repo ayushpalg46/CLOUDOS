@@ -1,6 +1,6 @@
 {
-    "name": "cloudos_app",
-    "short_name": "cloudos_app",
+    "name": "uniteos_app",
+    "short_name": "uniteos_app",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

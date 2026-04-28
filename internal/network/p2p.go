@@ -10,8 +10,8 @@ import (
 	"path/filepath"
 	"time"
 
-	"github.com/ayushgpal/cloudos/internal/core"
-	csync "github.com/ayushgpal/cloudos/internal/sync"
+	"github.com/ayushgpal/uniteos/internal/core"
+	csync "github.com/ayushgpal/uniteos/internal/sync"
 )
 
 // MessageType identifies the type of P2P protocol message.

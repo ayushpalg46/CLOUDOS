@@ -1,4 +1,4 @@
-// Package integrity provides data integrity verification and secure sharing for CloudOS.
+// Package integrity provides data integrity verification and secure sharing for UNITEos.
 package integrity
 
 import (
@@ -9,7 +9,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/ayushgpal/cloudos/internal/storage"
+	"github.com/ayushgpal/uniteos/internal/storage"
 )
 
 // VerificationResult holds the result of an integrity check for a single file.

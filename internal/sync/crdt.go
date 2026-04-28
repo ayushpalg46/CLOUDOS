@@ -1,4 +1,4 @@
-// Package sync provides the CRDT-based synchronization engine for CloudOS.
+// Package sync provides the CRDT-based synchronization engine for UNITEos.
 // It enables conflict-free multi-device data replication.
 package sync
 
