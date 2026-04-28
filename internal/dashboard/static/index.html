@@ -80,24 +80,21 @@
 
         <!-- Main Content -->
         <main class="main-content" id="mainContent">
-            <!-- Header -->
-            <header class="top-bar">
-                <div class="page-title">
-                    <h1 id="pageTitle">Dashboard</h1>
-                    <span class="page-subtitle" id="pageSubtitle">System overview</span>
+            <!-- Single unified top header -->
+            <header class="top-bar" style="display:flex;align-items:center;justify-content:space-between;padding:0 32px;border-bottom:1px solid rgba(255,255,255,0.05);background:rgba(17,17,24,0.7);backdrop-filter:blur(12px);flex-shrink:0;height:64px;">
+                <div style="display:flex;align-items:center;gap:16px;">
+                    <div style="display:flex;flex-direction:column;">
+                        <h1 id="pageTitle" style="font-size:16px;font-weight:700;color:#e2e8f0;letter-spacing:-0.02em;line-height:1.2;"></h1>
+                        <span id="pageSubtitle" style="font-size:10px;color:#64748b;font-family:'JetBrains Mono',monospace;"></span>
+                    </div>
                 </div>
-                <div class="top-bar-actions">
-                    <div class="search-bar">
-                        <svg viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/></svg>
-            <!-- Global Top Header -->
-            <header class="top-header" style="display: flex; align-items: center; justify-content: space-between; padding: 24px 32px; border-bottom: 1px solid rgba(255,255,255,0.05);">
-                <div class="search-bar" style="display: flex; align-items: center; gap: 12px; background: rgba(0,0,0,0.2); padding: 8px 16px; border-radius: 6px; width: 400px; border: 1px solid rgba(255,255,255,0.05);">
-                    <svg viewBox="0 0 20 20" fill="currentColor" style="width: 16px; height: 16px; color: #94a3b8;"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/></svg>
-                    <input type="text" placeholder="Search global vault..." style="background: transparent; border: none; color: #e2e8f0; font-family: 'JetBrains Mono', monospace; font-size: 11px; outline: none; width: 100%; letter-spacing: 1px; text-transform: uppercase;">
-                </div>
-                <div class="header-actions" style="display: flex; align-items: center; gap: 24px; color: #94a3b8;">
-                    <div style="display: flex; align-items: center; gap: 8px; font-size: 10px; font-weight: 600; letter-spacing: 1px; color: #10b981;">
-                        <div style="width: 6px; height: 6px; border-radius: 50%; background: #10b981;"></div>
+                <div style="display:flex;align-items:center;gap:12px;">
+                    <div style="display:flex;align-items:center;gap:8px;background:rgba(0,0,0,0.3);padding:8px 14px;border-radius:6px;border:1px solid rgba(255,255,255,0.06);">
+                        <svg viewBox="0 0 20 20" fill="currentColor" style="width:14px;height:14px;color:#64748b;"><path fill-rule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clip-rule="evenodd"/></svg>
+                        <input type="text" placeholder="Search global vault..." style="background:transparent;border:none;color:#e2e8f0;font-size:12px;outline:none;width:220px;" />
+                    </div>
+                    <div style="display:flex;align-items:center;gap:6px;font-size:10px;font-weight:600;letter-spacing:1px;color:#10b981;">
+                        <div style="width:6px;height:6px;border-radius:50%;background:#10b981;"></div>
                         SYNC ACTIVE
                     </div>
                     <svg viewBox="0 0 20 20" fill="currentColor" style="width: 18px; height: 18px; cursor: pointer;"><path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/></svg>
@@ -107,7 +104,7 @@
             </header>
 
             <!-- Page Content Container -->
-            <div class="page-content" id="pageContent" style="padding: 32px;">
+            <div class="page-content" id="pageContent">
                 <!-- Dashboard Page (default) -->
                 <div class="page active" id="page-dashboard">
                     <div style="margin-bottom: 24px;">
@@ -207,7 +204,7 @@
 
                 <!-- Files Page -->
                 <div class="page" id="page-files">
-                    <div style="display: flex; gap: 24px; height: calc(100vh - 120px);">
+                    <div style="display: flex; gap: 24px; min-height: 500px;">
                         <!-- Left: Vault Root -->
                         <div style="flex: 1; display: flex; flex-direction: column;">
                             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
@@ -291,9 +288,10 @@
                             </div>
                         </div>
                     </div>
-                </                <!-- Sync Page -->
+                </div>
+                <!-- Sync Page -->
                 <div class="page" id="page-sync">
-                    <div style="display: flex; gap: 24px; height: calc(100vh - 120px);">
+                    <div style="display: flex; gap: 24px; min-height: 500px;">
                         <!-- Left: Connected Peers -->
                         <div style="flex: 1; display: flex; flex-direction: column;">
                             <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
@@ -492,7 +490,7 @@
 
                 <!-- AI Assistant Page -->
                 <div class="page" id="page-ai">
-                    <div style="max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; height: calc(100vh - 120px);">
+                    <div style="max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px;">
                         
                         <!-- Header -->
                         <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 16px;">

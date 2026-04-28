@@ -531,6 +531,6 @@ document.getElementById('aiChatInput')?.addEventListener('keypress', (e) => {
 
 // ─── Initialize ───────────────────────────────────────────────
 document.addEventListener('DOMContentLoaded', () => {
-    loadDashboard();
+    navigateTo('dashboard');   // sets title + loads data
     startAutoRefresh();
 });
