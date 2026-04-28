@@ -1,4 +1,4 @@
-// Package ai provides local-first AI features for UNITEos.
+// Package ai provides local-first AI features for uniteOS.
 // All AI operations work fully offline using TF-IDF embeddings,
 // cosine similarity search, and rule-based content analysis.
 package ai

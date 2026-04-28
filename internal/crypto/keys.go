@@ -10,7 +10,7 @@ import (
 	"time"
 )
 
-// DeviceIdentity represents this device's identity in the UNITEos network.
+// DeviceIdentity represents this device's identity in the uniteOS network.
 type DeviceIdentity struct {
 	DeviceID   string    `json:"device_id"`
 	DeviceName string    `json:"device_name"`

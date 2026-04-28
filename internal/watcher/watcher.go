@@ -1,4 +1,4 @@
-// Package watcher provides real-time file system monitoring for UNITEos.
+// Package watcher provides real-time file system monitoring for uniteOS.
 // It watches tracked directories for changes and emits events through the event bus.
 package watcher
 

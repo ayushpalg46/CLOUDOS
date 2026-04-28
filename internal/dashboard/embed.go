@@ -1,4 +1,4 @@
-// Package dashboard provides the embedded web dashboard for UNITEos.
+// Package dashboard provides the embedded web dashboard for uniteOS.
 package dashboard
 
 import (

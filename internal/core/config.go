@@ -1,4 +1,4 @@
-// Package core provides the core runtime engine for UNITEos.
+// Package core provides the core runtime engine for uniteOS.
 // It manages the application lifecycle, configuration, and event system.
 package core
 
@@ -28,11 +28,11 @@ const (
 	DefaultLogFile = "uniteos.log"
 )
 
-// Config holds all UNITEos configuration values.
+// Config holds all uniteOS configuration values.
 type Config struct {
-	// DataDir is the root directory for all UNITEos data.
+	// DataDir is the root directory for all uniteOS data.
 	DataDir string `json:"data_dir"`
-	// WorkspaceDir is the directory being tracked by UNITEos.
+	// WorkspaceDir is the directory being tracked by uniteOS.
 	WorkspaceDir string `json:"workspace_dir"`
 	// DatabasePath is the path to the SQLite database.
 	DatabasePath string `json:"database_path"`

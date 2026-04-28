@@ -1,4 +1,4 @@
-// Package api provides the local REST API server for UNITEos.
+// Package api provides the local REST API server for uniteOS.
 package api
 
 import (
@@ -317,7 +317,7 @@ func (s *Server) handleUpload(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// Tell UNITEos to track it
+	// Tell uniteOS to track it
 	if err := s.store.TrackFile(destPath); err != nil {
 		s.respondError(w, 500, "failed to track file: "+err.Error())
 		return
@@ -708,7 +708,7 @@ func (s *Server) executeAIActions(reply string) string {
 }
 
 func callRealAI(query string, context string) string {
-	prompt := fmt.Sprintf(`You are the UNITEos AI Assistant. You help manage a local, secure personal cloud.
+	prompt := fmt.Sprintf(`You are the uniteOS AI Assistant. You help manage a local, secure personal cloud.
 If the user asks you to create, delete, or move files/folders, you MUST append EXACTLY ONE of these tags to the end of your response:
 [CREATE_FOLDER: folder_name]
 [CREATE_FILE: file_name | file_content]
@@ -811,11 +811,11 @@ func (s *Server) handleAIChat(w http.ResponseWriter, r *http.Request) {
 		if strings.Contains(query, "analyze") {
 			reply = "I couldn't connect to the Real AI, but here is my local analysis:\n\n" + context
 		} else if query == "hi" || query == "hello" || query == "hey" || strings.HasPrefix(query, "hello ") {
-			reply = "Hello! I am your secure UNITEos Assistant. To enable my advanced brain, please run a local Ollama server or set the GEMINI_API_KEY environment variable!"
+			reply = "Hello! I am your secure uniteOS Assistant. To enable my advanced brain, please run a local Ollama server or set the GEMINI_API_KEY environment variable!"
 		} else if strings.Contains(query, "how are you") {
-			reply = "I'm running perfectly! Your local UNITEos node is online, secure, and ready to assist."
+			reply = "I'm running perfectly! Your local uniteOS node is online, secure, and ready to assist."
 		} else if strings.Contains(query, "who are you") {
-			reply = "I am the UNITEos Local AI. Currently running in fallback mode."
+			reply = "I am the uniteOS Local AI. Currently running in fallback mode."
 		} else {
 			reply = "Here is what I found in your files:\n\n" + context + "\n\n(Note: To chat with me naturally, please run Ollama locally or set the GEMINI_API_KEY)."
 		}

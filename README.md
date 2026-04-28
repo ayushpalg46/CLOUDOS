@@ -1,4 +1,4 @@
-# UNITEos — Local-First Personal Cloud OS
+# uniteOS — Local-First Personal Cloud OS
 
 ```
    _____ _                 _  ____   _____
@@ -42,10 +42,10 @@ go build -o uniteos ./cmd/uniteos            # Linux/macOS
 ### 2. Initialize a Workspace
 
 ```bash
-# Navigate to the folder you want UNITEos to manage
+# Navigate to the folder you want uniteOS to manage
 cd ~/Documents/my-workspace
 
-# Initialize UNITEos
+# Initialize uniteOS
 uniteos init
 ```
 
@@ -104,7 +104,7 @@ uniteos serve
 |---------|-------------|
 | `uniteos watch` | Watch for real-time file changes |
 | `uniteos sync` | Start full sync daemon (watcher + discovery + P2P) |
-| `uniteos peers` | Discover other UNITEos devices on your LAN |
+| `uniteos peers` | Discover other uniteOS devices on your LAN |
 | `uniteos conflicts` | View and resolve sync conflicts |
 
 ### Dashboard & Security (Phase 3)
@@ -136,7 +136,7 @@ uniteos serve
 
 ## Connecting Multiple Devices
 
-UNITEos supports automatic multi-device sync over your local network (LAN).
+uniteOS supports automatic multi-device sync over your local network (LAN).
 All devices must be on the **same WiFi/network**.
 
 ### Step 1: Set Up Each Device
@@ -144,7 +144,7 @@ All devices must be on the **same WiFi/network**.
 On **every device** you want to sync:
 
 ```bash
-# Build UNITEos (or copy the binary)
+# Build uniteOS (or copy the binary)
 go build -o uniteos ./cmd/uniteos
 
 # Navigate to the folder you want to sync
@@ -202,7 +202,7 @@ This is the most secure way to sync, as it never touches a network.
 ### Mode 2: USB Tethering (Network over USB)
 
 If you connect your phone to your PC via USB and enable "USB Tethering", your phone acts as a network adapter.
-UNITEos will detect the new network interface automatically. Just run:
+uniteOS will detect the new network interface automatically. Just run:
 
 ```bash
 uniteos sync

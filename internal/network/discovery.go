@@ -1,4 +1,4 @@
-// Package network provides LAN discovery and P2P communication for UNITEos.
+// Package network provides LAN discovery and P2P communication for uniteOS.
 package network
 
 import (
@@ -14,7 +14,7 @@ import (
 )
 
 const (
-	// UNITEos discovery beacon port (UDP broadcast)
+	// uniteOS discovery beacon port (UDP broadcast)
 	discoveryPort = 7891
 	// Beacon interval
 	beaconInterval = 10 * time.Second

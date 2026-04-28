@@ -1,4 +1,4 @@
-// Package usb provides USB-based sync for UNITEos.
+// Package usb provides USB-based sync for uniteOS.
 // Supports two modes:
 //   1. USB Drive (sneakernet) — export/import sync bundles via flash drive
 //   2. USB Tethering — works automatically via the existing P2P sync
@@ -148,7 +148,7 @@ func (u *USBSync) Import(bundleDir string) (*ImportReport, error) {
 	manifestPath := filepath.Join(bundleDir, "manifest.json")
 	manifestData, err := os.ReadFile(manifestPath)
 	if err != nil {
-		return nil, fmt.Errorf("read manifest: %w (is this a UNITEos sync bundle?)", err)
+		return nil, fmt.Errorf("read manifest: %w (is this a uniteOS sync bundle?)", err)
 	}
 
 	var bundle SyncBundle

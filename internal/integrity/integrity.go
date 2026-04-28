@@ -1,4 +1,4 @@
-// Package integrity provides data integrity verification and secure sharing for UNITEos.
+// Package integrity provides data integrity verification and secure sharing for uniteOS.
 package integrity
 
 import (

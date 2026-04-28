@@ -1,4 +1,4 @@
-# UNITEos Demo Project
+# uniteOS Demo Project
 This is a demo workspace for the Local-First Personal Cloud OS.
 
 ## Features

@@ -13,7 +13,7 @@ import (
 	"github.com/ayushgpal/uniteos/internal/storage"
 )
 
-// Manager is the central AI orchestrator for UNITEos.
+// Manager is the central AI orchestrator for uniteOS.
 // It coordinates embeddings, semantic search, smart tagging,
 // auto-organization, and context-aware suggestions.
 type Manager struct {

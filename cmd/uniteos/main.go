@@ -1,4 +1,4 @@
-// UNITEos — Local-First Personal Cloud OS
+// uniteOS — Local-First Personal Cloud OS
 //
 // A privacy-first, decentralized, cross-device computing ecosystem.
 // All data is created, stored, and processed locally by default.
@@ -34,12 +34,11 @@ import (
 )
 
 const banner = `
-  _    _ _   _ _____ _______ ______         
- | |  | | \ | |_   _|__   __|  ____|        
- | |  | |  \| | | |    | |  | |__ ___  ___  
- | |  | | . ` + "`" + ` | | |    | |  |  __/ _ \/ __| 
- | |__| | |\  |_| |_   | |  | |____ (_) \__ \
-  \____/|_| \_|_____|  |_|  |______\___/|___/
+             _ _        ____   _____ 
+  _   _ _ __(_) |_ ___ / __ \ / ____|
+ | | | | '_ \ | __/ _ \ |  | | (___  
+ | |_| | | | | ||  __/ |__| |\___ \ 
+  \__,_|_| |_|_|\__\___|\____/|_____/ 
                                         v%s
   Local-First Personal Cloud OS
   ─────────────────────────────────────────
@@ -107,7 +106,7 @@ func main() {
 	case "help", "--help", "-h":
 		printUsage()
 	case "version", "--version", "-v":
-		fmt.Printf("UNITEos v%s\n", core.Version)
+		fmt.Printf("uniteOS v%s\n", core.Version)
 	default:
 		fmt.Fprintf(os.Stderr, "Unknown command: %s\n\n", command)
 		printUsage()
@@ -122,7 +121,7 @@ USAGE:
   uniteos <command> [arguments]
 
 COMMANDS:
-  init                  Initialize a new UNITEos workspace
+  init                  Initialize a new uniteOS workspace
   status                Show tracked files and their status
   add <path>            Track a file or directory
   snapshot [name]       Create a version snapshot
@@ -183,7 +182,7 @@ func getWorkspaceDir() string {
 func requireInit() string {
 	dir := getWorkspaceDir()
 	if !core.IsInitialized(dir) {
-		fmt.Fprintf(os.Stderr, "Error: not a UNITEos workspace. Run 'uniteos init' first.\n")
+		fmt.Fprintf(os.Stderr, "Error: not a uniteOS workspace. Run 'uniteos init' first.\n")
 		os.Exit(1)
 	}
 	return dir
@@ -212,7 +211,7 @@ func cmdInit() {
 	dir := getWorkspaceDir()
 
 	if core.IsInitialized(dir) {
-		fmt.Println("⚠  UNITEos workspace already initialized here.")
+		fmt.Println("⚠  uniteOS workspace already initialized here.")
 		return
 	}
 
@@ -587,7 +586,7 @@ func cmdConfig() {
 	engine, _ := initEngine(dir)
 
 	data, _ := json.MarshalIndent(engine.Config, "", "  ")
-	fmt.Println("⚙  UNITEos Configuration:")
+	fmt.Println("⚙  uniteOS Configuration:")
 	fmt.Println(string(data))
 }
 
@@ -751,7 +750,7 @@ func cmdGUI() {
 		if err != nil {
 			home = "."
 		}
-		defaultDir := filepath.Join(home, "UNITEos")
+		defaultDir := filepath.Join(home, "uniteOS")
 		
 		if !core.IsInitialized(defaultDir) {
 			os.MkdirAll(defaultDir, 0755)
@@ -827,7 +826,7 @@ func cmdGUI() {
 
 	// Start native window directly
 	gui.StartWindow(gui.Config{
-		Title:  "UNITEos — Personal Cloud",
+		Title:  "uniteOS — Personal Cloud",
 		URL:    url,
 		Width:  1200,
 		Height: 800,
@@ -913,7 +912,7 @@ func cmdVerify() {
 		report.Passed, report.Failed, report.Errors, report.Duration)
 
 	if report.Failed > 0 {
-		fmt.Println("\n⚠  Some files have been modified outside UNITEos tracking!")
+		fmt.Println("\n⚠  Some files have been modified outside uniteOS tracking!")
 	}
 }
 
@@ -1198,7 +1197,7 @@ func cmdUSBScan() {
 	}
 
 	drivePath := os.Args[2]
-	fmt.Printf("🔍 Scanning %s for UNITEos sync bundles...\n\n", drivePath)
+	fmt.Printf("🔍 Scanning %s for uniteOS sync bundles...\n\n", drivePath)
 
 	bundles, err := usb.ListBundles(drivePath)
 	if err != nil {
@@ -1437,7 +1436,7 @@ func cmdPeers() {
 		p2pPort, engine.EventBus, engine.Logger,
 	)
 
-	fmt.Println("📡 Scanning LAN for UNITEos peers (5 seconds)...")
+	fmt.Println("📡 Scanning LAN for uniteOS peers (5 seconds)...")
 
 	if err := discovery.Start(ctx); err != nil {
 		fmt.Fprintf(os.Stderr, "Error: %v\n", err)
@@ -1450,7 +1449,7 @@ func cmdPeers() {
 	peers := discovery.GetPeers()
 	if len(peers) == 0 {
 		fmt.Println("No peers found on the local network.")
-		fmt.Println("Make sure other UNITEos instances are running 'uniteos sync'.")
+		fmt.Println("Make sure other uniteOS instances are running 'uniteos sync'.")
 		return
 	}
 
