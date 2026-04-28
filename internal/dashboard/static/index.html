@@ -207,100 +207,211 @@
 
                 <!-- Files Page -->
                 <div class="page" id="page-files">
-                    <div class="panel panel-full">
-                        <div class="panel-header">
-                            <h2>Tracked Files</h2>
-                            <div class="panel-actions">
-                                <button class="btn btn-sm" id="btnBrowseSystem">
-                                    <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path d="M5.5 13a3.5 3.5 0 01-.369-6.98 4 4 0 117.753-1.977A4.5 4.5 0 1113.5 13H11V9.413l1.293 1.293a1 1 0 001.414-1.414l-3-3a1 1 0 00-1.414 0l-3 3a1 1 0 001.414 1.414L9 9.414V13H5.5z"/></svg>
-                                    Add from PC
-                                </button>
-                                <button class="btn btn-sm" id="btnUploadWeb" onclick="document.getElementById('webUploadInput').click()">
-                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M17 8l-5-5-5 5M12 3v12"/></svg>
-                                    Upload
-                                </button>
-                                <input type="file" id="webUploadInput" style="display:none" multiple>
-                                <button class="btn btn-sm btn-primary" id="btnVerifyIntegrity">
-                                    <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path fill-rule="evenodd" d="M2.166 4.999A11.954 11.954 0 0010 1.944 11.954 11.954 0 0017.834 5c.11.65.166 1.32.166 2.001 0 5.225-3.34 9.67-8 11.317C5.34 16.67 2 12.225 2 7c0-.682.057-1.35.166-2.001zm11.541 3.708a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg>
-                                    Verify Integrity
-                                </button>
+                    <div style="display: flex; gap: 24px; height: calc(100vh - 120px);">
+                        <!-- Left: Vault Root -->
+                        <div style="flex: 1; display: flex; flex-direction: column;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                                <h2 style="font-size: 16px; font-weight: 600; color: #e2e8f0;">Vault Root</h2>
+                                <div style="display: flex; gap: 8px;">
+                                    <button style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); width: 32px; height: 32px; border-radius: 6px; color: #e2e8f0; display: flex; align-items: center; justify-content: center; cursor: pointer;"><svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd"/></svg></button>
+                                    <button id="btnBrowseSystem" style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); width: 32px; height: 32px; border-radius: 6px; color: #e2e8f0; display: flex; align-items: center; justify-content: center; cursor: pointer;"><svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1H8a3 3 0 00-3 3v1.5a1.5 1.5 0 01-3 0V6z" clip-rule="evenodd"/><path d="M6 12a2 2 0 012-2h8a2 2 0 012 2v2a2 2 0 01-2 2H2h2a2 2 0 002-2v-2z"/></svg></button>
+                                    <button style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); width: 32px; height: 32px; border-radius: 6px; color: #e2e8f0; display: flex; align-items: center; justify-content: center; cursor: pointer;"><svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/></svg></button>
+                                    <button style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); width: 32px; height: 32px; border-radius: 6px; color: #ef4444; display: flex; align-items: center; justify-content: center; cursor: pointer;"><svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path fill-rule="evenodd" d="M9 2a1 1 0 00-.894.553L7.382 4H4a1 1 0 000 2v10a2 2 0 002 2h8a2 2 0 002-2V6a1 1 0 100-2h-3.382l-.724-1.447A1 1 0 0011 2H9zM7 8a1 1 0 012 0v6a1 1 0 11-2 0V8zm5-1a1 1 0 00-1 1v6a1 1 0 102 0V8a1 1 0 00-1-1z" clip-rule="evenodd"/></svg></button>
+                                </div>
                             </div>
-                        </div>
-                        <div class="panel-body">
-                            <div class="file-table-container">
-                                <table class="file-table" id="fileTable">
+                            
+                            <div style="flex: 1; border-top: 1px solid rgba(255,255,255,0.05);">
+                                <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 12px;">
                                     <thead>
-                                        <tr>
-                                            <th>Status</th>
-                                            <th>File</th>
-                                            <th>Size</th>
-                                            <th>Hash</th>
-                                            <th>Modified</th>
-                                            <th>Actions</th>
+                                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.05); color: #64748b; font-size: 10px; font-weight: 700; letter-spacing: 1px;">
+                                            <th style="padding: 16px 8px;">NAME</th>
+                                            <th style="padding: 16px 8px;">DATE MODIFIED</th>
+                                            <th style="padding: 16px 8px;">SIZE</th>
+                                            <th style="padding: 16px 8px; text-align: right;">STATUS</th>
                                         </tr>
                                     </thead>
                                     <tbody id="fileTableBody">
+                                        <!-- Mocked content for the design -->
+                                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.02);">
+                                            <td style="padding: 16px 8px; color: #e2e8f0; display: flex; align-items: center; gap: 12px;"><svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16" style="color: #94a3b8;"><path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4l2 2h4a2 2 0 012 2v1H8a3 3 0 00-3 3v1.5a1.5 1.5 0 01-3 0V6z" clip-rule="evenodd"/><path d="M6 12a2 2 0 012-2h8a2 2 0 012 2v2a2 2 0 01-2 2H2h2a2 2 0 002-2v-2z"/></svg> Q4_Financial_Projections</td>
+                                            <td style="padding: 16px 8px; color: #94a3b8; font-family: 'JetBrains Mono', monospace;">Oct 24, 2023</td>
+                                            <td style="padding: 16px 8px; color: #94a3b8; font-family: 'JetBrains Mono', monospace;">--</td>
+                                            <td style="padding: 16px 8px; text-align: right;"><div style="display: inline-block; width: 6px; height: 6px; border-radius: 50%; background: #10b981;"></div></td>
+                                        </tr>
+                                        <tr style="border-bottom: 1px solid rgba(255,255,255,0.02); background: rgba(139,92,246,0.05); border-left: 2px solid #8b5cf6;">
+                                            <td style="padding: 16px 8px; color: #e2e8f0; display: flex; align-items: center; gap: 12px; font-weight: 500;"><svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16" style="color: #8b5cf6;"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"/></svg> Project_Nebula_Architecture.md</td>
+                                            <td style="padding: 16px 8px; color: #94a3b8; font-family: 'JetBrains Mono', monospace;">Today, 09:41</td>
+                                            <td style="padding: 16px 8px; color: #94a3b8; font-family: 'JetBrains Mono', monospace;">42 KB</td>
+                                            <td style="padding: 16px 8px; text-align: right;"><svg viewBox="0 0 20 20" fill="currentColor" width="12" height="12" style="color: #8b5cf6;"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg></td>
+                                        </tr>
                                     </tbody>
                                 </table>
                             </div>
                         </div>
+                        
+                        <!-- Right: AI Insights -->
+                        <div style="width: 320px; border-left: 1px solid rgba(255,255,255,0.05); padding-left: 24px; display: flex; flex-direction: column;">
+                            <div style="display: flex; align-items: center; gap: 8px; font-weight: 600; color: #e2e8f0; margin-bottom: 24px;">
+                                <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16" style="color: #8b5cf6;"><path fill-rule="evenodd" d="M10 2a8 8 0 100 16 8 8 0 000-16zM9 14v-2.07l-3.24-1.62a1 1 0 010-1.78L9 6.91V5a1 1 0 112 0v1.91l3.24 1.62a1 1 0 010 1.78L11 11.93V14a1 1 0 11-2 0z" clip-rule="evenodd"/></svg>
+                                AI Insights
+                            </div>
+                            
+                            <!-- Preview Box -->
+                            <div style="background: #1A1D27; border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; height: 160px; display: flex; flex-direction: column; align-items: center; justify-content: center; margin-bottom: 16px;">
+                                <svg viewBox="0 0 20 20" fill="currentColor" width="48" height="48" style="color: #334155; margin-bottom: 8px;"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"/></svg>
+                                <span style="font-size: 10px; font-weight: 600; color: #64748b; letter-spacing: 1px;">Markdown Document</span>
+                            </div>
+                            
+                            <h3 style="font-size: 13px; font-weight: 600; color: #e2e8f0; margin-bottom: 4px;">Project_Nebula_Architecture.md</h3>
+                            <div style="display: flex; gap: 12px; font-size: 10px; font-weight: 600; color: #64748b; letter-spacing: 0.5px; margin-bottom: 24px;">
+                                <span>42 KB</span>
+                                <span style="color: #10b981; display: flex; align-items: center; gap: 4px;"><svg viewBox="0 0 20 20" fill="currentColor" width="10" height="10"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg> Encrypted locally</span>
+                            </div>
+                            
+                            <div style="border-top: 1px solid rgba(255,255,255,0.05); padding-top: 24px; flex: 1; display: flex; flex-direction: column; gap: 24px;">
+                                <div>
+                                    <div style="font-size: 9px; font-weight: 700; color: #64748b; letter-spacing: 1px; margin-bottom: 12px; display: flex; align-items: center; gap: 6px;">
+                                        <svg viewBox="0 0 20 20" fill="currentColor" width="12" height="12"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/></svg> AUTO-SUMMARY
+                                    </div>
+                                    <p style="font-size: 11px; color: #94a3b8; line-height: 1.6;">Details the structural framework for the Nebula distributed vault. Emphasizes end-to-end encryption protocols and peer-to-peer sync mechanisms. Mentions dependencies on <code style="background: rgba(139,92,246,0.1); color: #a855f7; padding: 2px 4px; border-radius: 4px;">main_encryption_loop.py</code>.</p>
+                                </div>
+                                
+                                <div>
+                                    <div style="font-size: 9px; font-weight: 700; color: #64748b; letter-spacing: 1px; margin-bottom: 12px;">SEMANTIC MATCHES</div>
+                                    <div style="display: flex; flex-direction: column; gap: 12px;">
+                                        <div style="display: flex; gap: 8px;">
+                                            <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14" style="color: #64748b; margin-top: 2px;"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"/></svg>
+                                            <div>
+                                                <div style="font-size: 11px; color: #e2e8f0; margin-bottom: 2px;">Nebula_Security_Audit_Draft.pdf</div>
+                                                <div style="font-size: 10px; color: #8b5cf6; font-weight: 600;">94% relevance</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                </div>
-
-                <!-- Sync Page -->
+                </                <!-- Sync Page -->
                 <div class="page" id="page-sync">
-                    <div class="stats-grid stats-grid-3">
-                        <div class="stat-card">
-                            <div class="stat-icon stat-icon-sync">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                    <div style="display: flex; gap: 24px; height: calc(100vh - 120px);">
+                        <!-- Left: Connected Peers -->
+                        <div style="flex: 1; display: flex; flex-direction: column;">
+                            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                                <h2 style="font-size: 16px; font-weight: 600; color: #e2e8f0;">Connected Peers</h2>
+                                <div style="background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); padding: 4px 12px; border-radius: 4px; font-size: 10px; font-weight: 700; color: #94a3b8; letter-spacing: 1px;">3 Active</div>
                             </div>
-                            <div class="stat-info">
-                                <span class="stat-value" id="syncStatus">Idle</span>
-                                <span class="stat-label">Sync Status</span>
+
+                            <div style="flex: 1; border-top: 1px solid rgba(255,255,255,0.05); padding-top: 16px;">
+                                <div style="display: flex; align-items: center; justify-content: space-between; padding: 16px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 12px;">
+                                    <div style="display: flex; align-items: center; gap: 16px;">
+                                        <div style="width: 32px; height: 32px; background: #1A1D27; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #e2e8f0;">
+                                            <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16"><path fill-rule="evenodd" d="M3 5a2 2 0 012-2h10a2 2 0 012 2v8a2 2 0 01-2 2h-2.22l.123.489.804.804A1 1 0 0113 18H7a1 1 0 01-.707-1.707l.804-.804L7.22 15H5a2 2 0 01-2-2V5zm5.771 7H5V5h10v7H8.771z" clip-rule="evenodd"/></svg>
+                                        </div>
+                                        <div>
+                                            <div style="font-size: 13px; font-weight: 500; color: #e2e8f0; margin-bottom: 4px;">Desktop-Home</div>
+                                            <div style="display: flex; align-items: center; gap: 4px; font-size: 10px; color: #10b981; font-weight: 600; letter-spacing: 1px;"><div style="width: 4px; height: 4px; border-radius: 50%; background: #10b981;"></div> Synced</div>
+                                        </div>
+                                    </div>
+                                    <div style="text-align: right;">
+                                        <div style="font-size: 11px; color: #e2e8f0; margin-bottom: 4px; font-family: 'JetBrains Mono', monospace;">12ms</div>
+                                        <div style="font-size: 10px; color: #64748b; font-weight: 600; letter-spacing: 1px;">Local</div>
+                                    </div>
+                                </div>
+
+                                <div style="display: flex; align-items: center; justify-content: space-between; padding: 16px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 12px;">
+                                    <div style="display: flex; align-items: center; gap: 16px;">
+                                        <div style="width: 32px; height: 32px; background: #1A1D27; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #e2e8f0;">
+                                            <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16"><path fill-rule="evenodd" d="M7 2a2 2 0 00-2 2v12a2 2 0 002 2h6a2 2 0 002-2V4a2 2 0 00-2-2H7zm3 14a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"/></svg>
+                                        </div>
+                                        <div>
+                                            <div style="font-size: 13px; font-weight: 500; color: #e2e8f0; margin-bottom: 4px;">Mobile-Pixel</div>
+                                            <div style="display: flex; align-items: center; gap: 4px; font-size: 10px; color: #8b5cf6; font-weight: 600; letter-spacing: 1px;"><svg viewBox="0 0 20 20" fill="currentColor" width="10" height="10"><path fill-rule="evenodd" d="M4 2a1 1 0 011 1v2.101a7.002 7.002 0 0111.601 2.566 1 1 0 11-1.885.666A5.002 5.002 0 005.999 7H9a1 1 0 010 2H4a1 1 0 01-1-1V3a1 1 0 011-1zm.008 9.057a1 1 0 011.276.61A5.002 5.002 0 0014.001 13H11a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0v-2.101a7.002 7.002 0 01-11.601-2.566 1 1 0 01.61-1.276z" clip-rule="evenodd"/></svg> Syncing</div>
+                                        </div>
+                                    </div>
+                                    <div style="text-align: right;">
+                                        <div style="font-size: 11px; color: #e2e8f0; margin-bottom: 4px; font-family: 'JetBrains Mono', monospace;">45ms</div>
+                                        <div style="font-size: 10px; color: #8b5cf6; font-weight: 600; letter-spacing: 1px;">1.2 MB/s</div>
+                                    </div>
+                                </div>
+
+                                <div style="display: flex; align-items: center; justify-content: space-between; padding: 16px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; margin-bottom: 12px;">
+                                    <div style="display: flex; align-items: center; gap: 16px;">
+                                        <div style="width: 32px; height: 32px; background: #1A1D27; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; display: flex; align-items: center; justify-content: center; color: #e2e8f0;">
+                                            <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16"><path d="M5 3a2 2 0 00-2 2v2a2 2 0 002 2h10a2 2 0 002-2V5a2 2 0 00-2-2H5zM5 11a2 2 0 00-2 2v2a2 2 0 002 2h10a2 2 0 002-2v-2a2 2 0 00-2-2H5z"/></svg>
+                                        </div>
+                                        <div>
+                                            <div style="font-size: 13px; font-weight: 500; color: #e2e8f0; margin-bottom: 4px;">Server-Vault</div>
+                                            <div style="display: flex; align-items: center; gap: 4px; font-size: 10px; color: #10b981; font-weight: 600; letter-spacing: 1px;"><div style="width: 4px; height: 4px; border-radius: 50%; background: #10b981;"></div> Synced</div>
+                                        </div>
+                                    </div>
+                                    <div style="text-align: right;">
+                                        <div style="font-size: 11px; color: #e2e8f0; margin-bottom: 4px; font-family: 'JetBrains Mono', monospace;">8ms</div>
+                                        <div style="font-size: 10px; color: #64748b; font-weight: 600; letter-spacing: 1px;">Remote</div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <div class="stat-card">
-                            <div class="stat-icon stat-icon-peers">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 00-3-3.87"/><path d="M16 3.13a4 4 0 010 7.75"/></svg>
+                        
+                        <!-- Right: Conflict Resolution -->
+                        <div style="flex: 1; border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; background: #1A1D27; display: flex; flex-direction: column;">
+                            <div style="padding: 24px; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; justify-content: space-between; align-items: center;">
+                                <div style="display: flex; align-items: center; gap: 12px; font-size: 16px; font-weight: 600; color: #e2e8f0;">
+                                    <svg viewBox="0 0 20 20" fill="currentColor" width="20" height="20" style="color: #f59e0b;"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
+                                    Conflict Resolution
+                                </div>
+                                <div style="border: 1px solid rgba(245, 158, 11, 0.2); background: rgba(245, 158, 11, 0.05); color: #f59e0b; padding: 4px 12px; border-radius: 4px; font-size: 10px; font-weight: 700; letter-spacing: 1px;">1 Clash Detected</div>
                             </div>
-                            <div class="stat-info">
-                                <span class="stat-value" id="peerCount">0</span>
-                                <span class="stat-label">Connected Peers</span>
-                            </div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-icon stat-icon-conflicts">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4.5c-.77-.833-2.694-.833-3.464 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
-                            </div>
-                            <div class="stat-info">
-                                <span class="stat-value" id="conflictCount">0</span>
-                                <span class="stat-label">Conflicts</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-full" style="margin-top: 20px; background: rgba(99, 102, 241, 0.05); border: 1px solid rgba(99, 102, 241, 0.2);">
-                        <div class="panel-body" style="display: flex; align-items: center; gap: 15px;">
-                            <div class="stat-icon" style="background: rgba(99, 102, 241, 0.2); color: #818cf8; flex-shrink: 0; width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
-                            </div>
-                            <div>
-                                <div style="font-size: 0.85rem; color: var(--text-muted); margin-bottom: 4px;">Android Connection URL (If auto-detect fails, type this into your mobile app's Settings Tab)</div>
-                                <div id="androidAccessUrl" style="font-size: 1.25rem; font-family: 'JetBrains Mono', monospace; font-weight: 600; color: #e2e8f0; letter-spacing: 0.5px;">Checking...</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="panel panel-full">
-                        <div class="panel-header"><h2>Connected Devices</h2></div>
-                        <div class="panel-body" id="peerList">
-                            <div class="empty-state">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-                                <p>No peers connected</p>
-                                <span class="text-muted">Run <code>uniteos sync</code> on another device</span>
+                            
+                            <div style="padding: 24px; flex: 1; display: flex; flex-direction: column;">
+                                <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; padding: 16px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 24px;">
+                                    <div style="display: flex; align-items: center; gap: 12px;">
+                                        <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16" style="color: #a855f7;"><path fill-rule="evenodd" d="M4 4a2 2 0 012-2h4.586A2 2 0 0112 2.586L15.414 6A2 2 0 0116 7.414V16a2 2 0 01-2 2H6a2 2 0 01-2-2V4zm2 6a1 1 0 011-1h6a1 1 0 110 2H7a1 1 0 01-1-1zm1 3a1 1 0 100 2h6a1 1 0 100-2H7z" clip-rule="evenodd"/></svg>
+                                        <span style="font-size: 11px; color: #e2e8f0; font-family: 'JetBrains Mono', monospace;">/vault/projects/crypto_config.json</span>
+                                    </div>
+                                    <span style="font-size: 10px; font-weight: 700; color: #94a3b8; letter-spacing: 1px;">LAST MODIFIED: 2 MINS AGO</span>
+                                </div>
+                                
+                                <div style="display: flex; gap: 16px; flex: 1;">
+                                    <div style="flex: 1; border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;">
+                                        <div style="background: rgba(255,255,255,0.02); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 16px; display: flex; justify-content: space-between; align-items: center;">
+                                            <span style="font-size: 10px; font-weight: 700; color: #e2e8f0; letter-spacing: 1px;">LOCAL (DESKTOP-HOME)</span>
+                                            <span style="font-size: 10px; color: #64748b; font-family: 'JetBrains Mono', monospace;">4.2 KB</span>
+                                        </div>
+                                        <div style="padding: 16px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #94a3b8; line-height: 1.6; flex: 1;">
+                                            <div>{</div>
+                                            <div style="padding-left: 16px;">"encryption": "AES-256-GCM",</div>
+                                            <div style="padding-left: 16px;">"key_derivation": "Argon2id",</div>
+                                            <div style="padding-left: 16px;">"iterations": 3,</div>
+                                            <div style="padding-left: 16px;">"memory": 65536,</div>
+                                            <div style="padding-left: 16px; background: rgba(239,68,68,0.1); color: #ef4444; border-radius: 2px;">- "auto_lock": false</div>
+                                            <div style="padding-left: 16px; background: rgba(16,185,129,0.1); color: #10b981; border-radius: 2px;">+ "auto_lock": true</div>
+                                            <div>}</div>
+                                        </div>
+                                        <button style="padding: 16px; border: none; border-top: 1px solid rgba(255,255,255,0.05); background: transparent; color: #e2e8f0; font-size: 10px; font-weight: 700; letter-spacing: 1px; cursor: pointer;">KEEP LOCAL</button>
+                                    </div>
+                                    
+                                    <div style="flex: 1; border: 1px solid rgba(255,255,255,0.05); border-radius: 8px; overflow: hidden; display: flex; flex-direction: column;">
+                                        <div style="background: rgba(255,255,255,0.02); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 12px 16px; display: flex; justify-content: space-between; align-items: center;">
+                                            <span style="font-size: 10px; font-weight: 700; color: #e2e8f0; letter-spacing: 1px;">REMOTE (SERVER-VAULT)</span>
+                                            <span style="font-size: 10px; color: #64748b; font-family: 'JetBrains Mono', monospace;">4.1 KB</span>
+                                        </div>
+                                        <div style="padding: 16px; font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #94a3b8; line-height: 1.6; flex: 1;">
+                                            <div>{</div>
+                                            <div style="padding-left: 16px;">"encryption": "AES-256-GCM",</div>
+                                            <div style="padding-left: 16px;">"key_derivation": "Argon2id",</div>
+                                            <div style="padding-left: 16px;">"iterations": 3,</div>
+                                            <div style="padding-left: 16px;">"memory": 65536,</div>
+                                            <div style="padding-left: 16px;">"auto_lock": false</div>
+                                            <div>}</div>
+                                        </div>
+                                        <button style="padding: 16px; border: none; border-top: 1px solid rgba(255,255,255,0.05); background: transparent; color: #e2e8f0; font-size: 10px; font-weight: 700; letter-spacing: 1px; cursor: pointer;">KEEP REMOTE</button>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
+            </div>
                 <!-- Snapshots Page -->
                 <div class="page" id="page-snapshots">
                     <div class="panel panel-full">
@@ -319,45 +430,60 @@
 
                 <!-- Security Page -->
                 <div class="page" id="page-security">
-                    <div class="stats-grid stats-grid-2">
-                        <div class="stat-card">
-                            <div class="stat-icon stat-icon-shield">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-                            </div>
-                            <div class="stat-info">
-                                <span class="stat-value" id="encryptionStatus">AES-256</span>
-                                <span class="stat-label">Encryption</span>
-                            </div>
-                        </div>
-                        <div class="stat-card">
-                            <div class="stat-icon stat-icon-key">
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
-                            </div>
-                            <div class="stat-info">
-                                <span class="stat-value" id="identityStatus">Active</span>
-                                <span class="stat-label">Device Identity</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="dashboard-grid">
-                        <div class="panel">
-                            <div class="panel-header"><h2>Integrity Checks</h2></div>
-                            <div class="panel-body" id="integrityResults">
-                                <div class="empty-state small">
-                                    <p>Click "Verify Integrity" on the Files page to check file hashes</p>
+                    <div style="display: flex; gap: 24px; height: calc(100vh - 120px);">
+                        <!-- Left Panel -->
+                        <div style="flex: 1; display: flex; flex-direction: column; gap: 24px;">
+                            <!-- Encryption Health -->
+                            <div style="background: rgba(16,185,129,0.05); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 32px; display: flex; align-items: flex-start; gap: 24px;">
+                                <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(16,185,129,0.1); display: flex; align-items: center; justify-content: center; color: #10b981; flex-shrink: 0;">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="24" height="24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                                </div>
+                                <div>
+                                    <div style="font-size: 16px; font-weight: 600; color: #10b981; margin-bottom: 8px;">Encryption Health</div>
+                                    <div style="font-size: 13px; color: #e2e8f0; line-height: 1.6;">Cryptographic Verification Active. All local files are secured with AES-256 and verified via distributed consensus across your private mesh network.</div>
                                 </div>
                             </div>
+
+                            <!-- System Alert -->
+                            <div style="background: rgba(239,68,68,0.05); border: 1px solid rgba(239,68,68,0.2); border-radius: 12px; padding: 24px; margin-top: auto;">
+                                <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+                                    <svg viewBox="0 0 20 20" fill="currentColor" width="20" height="20" style="color: #ef4444;"><path fill-rule="evenodd" d="M8.257 3.099c.765-1.36 2.722-1.36 3.486 0l5.58 9.92c.75 1.334-.213 2.98-1.742 2.98H4.42c-1.53 0-2.493-1.646-1.743-2.98l5.58-9.92zM11 13a1 1 0 11-2 0 1 1 0 012 0zm-1-8a1 1 0 00-1 1v3a1 1 0 002 0V6a1 1 0 00-1-1z" clip-rule="evenodd"/></svg>
+                                    <span style="font-size: 13px; font-weight: 600; color: #ef4444;">SYSTEM ALERT</span>
+                                </div>
+                                <div style="font-size: 13px; color: #e2e8f0; line-height: 1.6;">
+                                    Unauthorized access attempt blocked from IP 192.168.1.45.
+                                </div>
+                                <button style="margin-top: 16px; background: transparent; border: 1px solid rgba(239,68,68,0.5); color: #ef4444; padding: 8px 16px; border-radius: 6px; font-size: 11px; font-weight: 600; cursor: pointer;">VIEW LOGS</button>
+                            </div>
                         </div>
-                        <div class="panel">
-                            <div class="panel-header"><h2>Secure Sharing</h2></div>
-                            <div class="panel-body">
-                                <div class="share-form">
-                                    <label class="form-label">Generate temporary share link</label>
-                                    <div class="input-group">
-                                        <input type="text" placeholder="File path..." id="shareFilePath" class="form-input">
-                                        <button class="btn btn-primary" id="btnGenerateShare">Generate</button>
+
+                        <!-- Right Panel: Vault Snapshots -->
+                        <div style="flex: 1; border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; background: #1A1D27; display: flex; flex-direction: column;">
+                            <div style="padding: 24px; border-bottom: 1px solid rgba(255,255,255,0.05);">
+                                <h2 style="font-size: 16px; font-weight: 600; color: #e2e8f0; margin-bottom: 4px;">Vault Snapshots</h2>
+                                <p style="font-size: 11px; color: #94a3b8;">Recent automated backups</p>
+                            </div>
+                            <div style="padding: 24px; flex: 1; display: flex; flex-direction: column; gap: 16px;">
+                                <div style="display: flex; justify-content: space-between; align-items: center; padding: 16px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px;">
+                                    <div style="display: flex; align-items: center; gap: 16px;">
+                                        <svg viewBox="0 0 20 20" fill="currentColor" width="20" height="20" style="color: #64748b;"><path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"/><path fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clip-rule="evenodd"/></svg>
+                                        <div>
+                                            <div style="font-size: 13px; font-weight: 600; color: #e2e8f0; margin-bottom: 2px;">Snapshot 1024</div>
+                                            <div style="font-size: 10px; color: #64748b; font-family: 'JetBrains Mono', monospace;">Today, 14:00</div>
+                                        </div>
                                     </div>
-                                    <div id="shareResult" class="share-result hidden"></div>
+                                    <button style="background: transparent; border: 1px solid rgba(255,255,255,0.1); color: #e2e8f0; padding: 6px 12px; border-radius: 4px; font-size: 10px; font-weight: 600; cursor: pointer;">RESTORE</button>
+                                </div>
+                                
+                                <div style="display: flex; justify-content: space-between; align-items: center; padding: 16px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 8px;">
+                                    <div style="display: flex; align-items: center; gap: 16px;">
+                                        <svg viewBox="0 0 20 20" fill="currentColor" width="20" height="20" style="color: #64748b;"><path fill-rule="evenodd" d="M4 4a2 2 0 00-2 2v1h16V6a2 2 0 00-2-2H4z"/><path fill-rule="evenodd" d="M18 9H2v5a2 2 0 002 2h12a2 2 0 002-2V9zM4 13a1 1 0 011-1h1a1 1 0 110 2H5a1 1 0 01-1-1zm5-1a1 1 0 100 2h1a1 1 0 100-2H9z" clip-rule="evenodd"/></svg>
+                                        <div>
+                                            <div style="font-size: 13px; font-weight: 600; color: #e2e8f0; margin-bottom: 2px;">Snapshot 1023</div>
+                                            <div style="font-size: 10px; color: #64748b; font-family: 'JetBrains Mono', monospace;">Today, 13:45</div>
+                                        </div>
+                                    </div>
+                                    <button style="background: transparent; border: 1px solid rgba(255,255,255,0.1); color: #e2e8f0; padding: 6px 12px; border-radius: 4px; font-size: 10px; font-weight: 600; cursor: pointer;">RESTORE</button>
                                 </div>
                             </div>
                         </div>
@@ -366,22 +492,93 @@
 
                 <!-- AI Assistant Page -->
                 <div class="page" id="page-ai">
-                    <div class="panel panel-full" style="display: flex; flex-direction: column; height: 600px;">
-                        <div class="panel-header">
-                            <h2>uniteOS AI Assistant</h2>
-                            <span class="badge">Online</span>
-                        </div>
-                        <div class="panel-body scrollable-tall" id="aiChatLog" style="flex: 1; display: flex; flex-direction: column; gap: 12px; background: rgba(0,0,0,0.2);">
-                            <div class="event-item" style="border:none; padding: 10px; background: rgba(99, 102, 241, 0.1); border-radius: 12px; align-self: flex-start; max-width: 80%;">
-                                <div class="event-details">
-                                    <span class="event-source" style="color: var(--accent-indigo);">uniteOS AI</span>
-                                    <div class="event-data" style="margin-top: 4px; font-size: 13px;">Hello! I am your personal uniteOS AI. How can I help you manage your files today?</div>
+                    <div style="max-width: 900px; margin: 0 auto; display: flex; flex-direction: column; gap: 24px; height: calc(100vh - 120px);">
+                        
+                        <!-- Header -->
+                        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 16px;">
+                            <div style="display: flex; align-items: center; gap: 16px;">
+                                <div style="width: 40px; height: 40px; border-radius: 8px; background: rgba(255,255,255,0.05); display: flex; align-items: center; justify-content: center; color: #a855f7;">
+                                    <svg viewBox="0 0 20 20" fill="currentColor" width="20" height="20"><path fill-rule="evenodd" d="M10 2a8 8 0 100 16 8 8 0 000-16zM9 14v-2.07l-3.24-1.62a1 1 0 010-1.78L9 6.91V5a1 1 0 112 0v1.91l3.24 1.62a1 1 0 010 1.78L11 11.93V14a1 1 0 11-2 0z" clip-rule="evenodd"/></svg>
+                                </div>
+                                <div>
+                                    <h2 style="font-size: 16px; font-weight: 600; color: #e2e8f0; margin-bottom: 4px;">Local AI Assistant</h2>
+                                    <div style="display: flex; align-items: center; gap: 6px; font-size: 10px; color: #10b981; font-weight: 600; letter-spacing: 1px;">
+                                        <div style="width: 6px; height: 6px; border-radius: 50%; background: #10b981;"></div> ONLINE
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="display: flex; gap: 24px; text-align: right; font-size: 10px; font-weight: 600; letter-spacing: 1px;">
+                                <div>
+                                    <div style="color: #64748b; margin-bottom: 4px;">MODEL</div>
+                                    <div style="color: #e2e8f0;">Llama-3-uniteOS-8B</div>
+                                </div>
+                                <div>
+                                    <div style="color: #64748b; margin-bottom: 4px;">PRIVACY</div>
+                                    <div style="color: #10b981;">ZERO-DATA-LEAK</div>
                                 </div>
                             </div>
                         </div>
-                        <div style="padding: 16px; border-top: 1px solid var(--border); display: flex; gap: 12px;">
-                            <input type="text" id="aiChatInput" class="form-input" placeholder="Ask about your files..." style="border-radius: 20px;">
-                            <button class="btn btn-primary" id="btnSendAiMessage" style="border-radius: 20px; padding: 0 20px;">Send</button>
+
+                        <!-- Chat Area -->
+                        <div style="flex: 1; overflow-y: auto; display: flex; flex-direction: column; gap: 24px;" id="aiChatLog">
+                            <div style="display: flex; gap: 16px;">
+                                <div style="width: 32px; height: 32px; border-radius: 8px; background: rgba(139,92,246,0.1); border: 1px solid rgba(139,92,246,0.2); display: flex; align-items: center; justify-content: center; color: #8b5cf6; flex-shrink: 0;">
+                                    <svg viewBox="0 0 20 20" fill="currentColor" width="16" height="16"><path fill-rule="evenodd" d="M10 2a8 8 0 100 16 8 8 0 000-16zM9 14v-2.07l-3.24-1.62a1 1 0 010-1.78L9 6.91V5a1 1 0 112 0v1.91l3.24 1.62a1 1 0 010 1.78L11 11.93V14a1 1 0 11-2 0z" clip-rule="evenodd"/></svg>
+                                </div>
+                                <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); padding: 20px; border-radius: 12px; font-size: 13px; color: #e2e8f0; line-height: 1.6; max-width: 600px;">
+                                    <p style="margin-bottom: 16px;">Hello. I am uniteOS AI, your local-first cryptographic assistant. I have indexed your encrypted filesystem and am ready to answer queries.</p>
+                                    <p>How can I help you today? You can ask me to find documents, summarize notes, or query your device health status.</p>
+                                </div>
+                            </div>
+
+                            <div style="display: flex; gap: 12px; margin-left: 48px; flex-wrap: wrap;">
+                                <div style="padding: 8px 16px; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; font-size: 11px; color: #94a3b8; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">"Where is the Q3 report?"</div>
+                                <div style="padding: 8px 16px; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; font-size: 11px; color: #94a3b8; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">"Summarize /Documents/Projects"</div>
+                                <div style="padding: 8px 16px; border: 1px solid rgba(255,255,255,0.1); border-radius: 6px; font-size: 11px; color: #94a3b8; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='transparent'">"Check disk health"</div>
+                            </div>
+                        </div>
+
+                        <!-- Info Grid -->
+                        <div style="display: grid; grid-template-columns: 2fr 1fr; gap: 16px;">
+                            <div style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); padding: 20px; border-radius: 12px;">
+                                <div style="display: flex; align-items: center; gap: 8px; font-size: 10px; font-weight: 600; letter-spacing: 1px; color: #64748b; margin-bottom: 16px;">
+                                    <svg viewBox="0 0 20 20" fill="currentColor" width="14" height="14"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm3 4a1 1 0 000 2h.01a1 1 0 100-2H7zm3 0a1 1 0 000 2h3a1 1 0 100-2h-3zm-3 4a1 1 0 100 2h.01a1 1 0 100-2H7zm3 0a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"/></svg>
+                                    CONTEXTUAL MEMORY
+                                </div>
+                                <div style="font-size: 12px; color: #94a3b8; line-height: 1.6;">
+                                    Currently processing your recent activity in <span style="color: #8b5cf6;">#product-launch</span>. AI performance is optimized for high-speed local inference.
+                                </div>
+                            </div>
+                            <div style="background: rgba(139,92,246,0.05); border: 1px solid rgba(139,92,246,0.1); padding: 20px; border-radius: 12px;">
+                                <div style="display: flex; align-items: center; gap: 8px; font-size: 10px; font-weight: 600; letter-spacing: 1px; color: #8b5cf6; margin-bottom: 16px;">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="14" height="14"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"/><rect x="9" y="9" width="6" height="6"/></svg>
+                                </div>
+                                <div style="font-size: 14px; font-weight: 600; color: #a855f7; margin-bottom: 4px;">4.2 GB VRAM</div>
+                                <div style="font-size: 9px; color: #8b5cf6; letter-spacing: 1px;">ALLOCATED</div>
+                            </div>
+                        </div>
+
+                        <!-- Input Area -->
+                        <div style="background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 12px; margin-top: 16px;">
+                            <div style="display: flex; align-items: center; gap: 12px;">
+                                <svg viewBox="0 0 20 20" fill="currentColor" width="20" height="20" style="color: #64748b; cursor: pointer;"><path fill-rule="evenodd" d="M8 4a3 3 0 00-3 3v4a5 5 0 0010 0V7a1 1 0 112 0v4a7 7 0 11-14 0V7a5 5 0 0110 0v4a3 3 0 11-6 0V7a1 1 0 012 0v4a1 1 0 102 0V7a3 3 0 00-3-3z" clip-rule="evenodd"/></svg>
+                                <input type="text" id="aiChatInput" placeholder="Type your query... (e.g. 'Show me photos from last July')" style="flex: 1; background: transparent; border: none; color: #e2e8f0; font-size: 14px; outline: none;">
+                                <button id="btnSendAiMessage" style="background: #8b5cf6; border: none; width: 40px; height: 40px; border-radius: 8px; display: flex; align-items: center; justify-content: center; cursor: pointer; color: white;">
+                                    <svg viewBox="0 0 20 20" fill="currentColor" width="20" height="20"><path d="M10.894 2.553a1 1 0 00-1.788 0l-7 14a1 1 0 001.169 1.409l5-1.429A1 1 0 009 15.571V11a1 1 0 112 0v4.571a1 1 0 00.725.962l5 1.428a1 1 0 001.17-1.408l-7-14z"/></svg>
+                                </button>
+                            </div>
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 0 4px;">
+                                <div style="display: flex; gap: 16px; font-size: 9px; color: #64748b; font-weight: 600; letter-spacing: 1px;">
+                                    <span style="cursor: pointer; display: flex; align-items: center; gap: 4px;"><svg viewBox="0 0 20 20" fill="currentColor" width="12" height="12"><path fill-rule="evenodd" d="M7 4a3 3 0 016 0v4a3 3 0 11-6 0V4zm4 10.93A7.001 7.001 0 0017 8a1 1 0 10-2 0A5 5 0 015 8a1 1 0 00-2 0 7.001 7.001 0 006 6.93V17H6a1 1 0 100 2h8a1 1 0 100-2h-3v-2.07z" clip-rule="evenodd"/></svg> VOICE</span>
+                                    <span style="cursor: pointer; display: flex; align-items: center; gap: 4px;"><svg viewBox="0 0 20 20" fill="currentColor" width="12" height="12"><path fill-rule="evenodd" d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4zm12 12H4l4-8 3 6 2-4 3 6z" clip-rule="evenodd"/></svg> VISUAL CONTEXT</span>
+                                </div>
+                                <div style="font-size: 9px; color: #10b981; font-weight: 600; letter-spacing: 1px; display: flex; align-items: center; gap: 4px;">
+                                    ENCRYPTED AT REST <svg viewBox="0 0 20 20" fill="currentColor" width="10" height="10"><path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd"/></svg>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="text-align: center; font-size: 9px; font-weight: 600; letter-spacing: 1px; color: rgba(255,255,255,0.1); margin-top: 8px;">
+                            uniteOS AI RUNS LOCALLY. NO DATA EVER LEAVES YOUR DEVICE.
                         </div>
                     </div>
                 </div>
