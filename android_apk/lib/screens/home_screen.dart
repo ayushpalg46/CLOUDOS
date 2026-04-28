@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../providers/sync_provider.dart';
-import '../main.dart';
 
 import 'dashboard_tab.dart';
 import 'files_tab.dart';
@@ -18,19 +17,11 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   int _currentIndex = 0;
 
-  // Tabs preserved exactly as-is
   final List<Widget> _tabs = [
-    const FilesTab(),
     const DashboardTab(),
+    const FilesTab(),
     const AiTab(),
     const SettingsTab(),
-  ];
-
-  static const List<_NavItem> _navItems = [
-    _NavItem(icon: Icons.folder_outlined,   activeIcon: Icons.folder,              label: 'EXPLORER'),
-    _NavItem(icon: Icons.sync_outlined,      activeIcon: Icons.sync,                label: 'SYNC'),
-    _NavItem(icon: Icons.terminal_outlined,  activeIcon: Icons.terminal,            label: 'AI'),
-    _NavItem(icon: Icons.grid_view_outlined, activeIcon: Icons.grid_view_rounded,   label: 'MORE'),
   ];
 
   @override
@@ -38,125 +29,47 @@ class _HomeScreenState extends State<HomeScreen> {
     final syncProvider = context.watch<SyncProvider>();
 
     return Scaffold(
-      backgroundColor: AppColors.bg,
       appBar: AppBar(
-        backgroundColor: AppColors.bg,
+        title: const Text('☁ uniteOS', style: TextStyle(fontWeight: FontWeight.bold, letterSpacing: -0.5)),
+        centerTitle: true,
+        backgroundColor: Colors.transparent,
         elevation: 0,
-        titleSpacing: 16,
-        title: Row(
-          children: [
-            const Icon(Icons.cloud_outlined, color: AppColors.textPrimary, size: 20),
-            const SizedBox(width: 8),
-            const Text('CLOUDOS', style: TextStyle(
-              fontWeight: FontWeight.w700,
-              fontSize: 14,
-              letterSpacing: 2,
-              color: AppColors.textPrimary,
-            )),
-          ],
-        ),
         actions: [
-          // Sync status badge (image shows "E2EE SECURE" style chip)
-          Container(
-            margin: const EdgeInsets.only(right: 12),
-            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-            decoration: BoxDecoration(
-              border: Border.all(
-                color: syncProvider.isConnected ? AppColors.blue : AppColors.border,
-                width: 1.5,
-              ),
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Icon(Icons.lock_outline, size: 12,
-                  color: syncProvider.isConnected ? AppColors.blue : AppColors.textSecondary),
-                const SizedBox(width: 6),
-                Text(
-                  syncProvider.isConnected ? 'SYNCED' : 'OFFLINE',
-                  style: TextStyle(
-                    fontSize: 10,
-                    fontWeight: FontWeight.w700,
-                    letterSpacing: 1.5,
-                    color: syncProvider.isConnected ? AppColors.blue : AppColors.textSecondary,
-                  ),
-                ),
-              ],
-            ),
+          Icon(
+            syncProvider.isConnected ? Icons.cloud_done : Icons.cloud_off,
+            color: syncProvider.isConnected ? Colors.greenAccent : Colors.redAccent,
           ),
-          IconButton(
-            icon: const Icon(Icons.settings_outlined, size: 20),
-            color: AppColors.textSecondary,
-            onPressed: () => setState(() => _currentIndex = 3),
-          ),
-          const SizedBox(width: 4),
+          const SizedBox(width: 16),
         ],
-        bottom: PreferredSize(
-          preferredSize: const Size.fromHeight(1),
-          child: Container(height: 1, color: AppColors.border),
-        ),
       ),
-      body: IndexedStack(
-        index: _currentIndex,
-        children: _tabs,
+      body: AnimatedSwitcher(
+        duration: const Duration(milliseconds: 300),
+        child: _tabs[_currentIndex],
       ),
-      bottomNavigationBar: Container(
-        decoration: const BoxDecoration(
-          color: AppColors.bg,
-          border: Border(top: BorderSide(color: AppColors.border, width: 1)),
-        ),
-        child: SafeArea(
-          child: SizedBox(
-            height: 64,
-            child: Row(
-              children: List.generate(_navItems.length, (i) {
-                final item = _navItems[i];
-                final isActive = _currentIndex == i;
-                return Expanded(
-                  child: GestureDetector(
-                    onTap: () => setState(() => _currentIndex = i),
-                    behavior: HitTestBehavior.opaque,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Icon(
-                          isActive ? item.activeIcon : item.icon,
-                          size: 22,
-                          color: isActive ? AppColors.yellow : AppColors.textMuted,
-                        ),
-                        const SizedBox(height: 4),
-                        Text(
-                          item.label,
-                          style: TextStyle(
-                            fontSize: 9,
-                            fontWeight: FontWeight.w700,
-                            letterSpacing: 1,
-                            color: isActive ? AppColors.yellow : AppColors.textMuted,
-                          ),
-                        ),
-                        const SizedBox(height: 4),
-                        AnimatedContainer(
-                          duration: const Duration(milliseconds: 200),
-                          height: 2,
-                          width: isActive ? 24 : 0,
-                          color: AppColors.yellow,
-                        ),
-                      ],
-                    ),
-                  ),
-                );
-              }),
-            ),
+      bottomNavigationBar: NavigationBarTheme(
+        data: NavigationBarThemeData(
+          indicatorColor: const Color(0xFF6366f1).withOpacity(0.25),
+          labelTextStyle: MaterialStateProperty.all(
+            const TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
           ),
+        ),
+        child: NavigationBar(
+          selectedIndex: _currentIndex,
+          backgroundColor: const Color(0xFF0f172a),
+          elevation: 0,
+          onDestinationSelected: (index) {
+            setState(() {
+              _currentIndex = index;
+            });
+          },
+          destinations: const [
+            NavigationDestination(icon: Icon(Icons.dashboard_outlined), selectedIcon: Icon(Icons.dashboard, color: Color(0xFFa855f7)), label: 'Home'),
+            NavigationDestination(icon: Icon(Icons.folder_outlined), selectedIcon: Icon(Icons.folder, color: Color(0xFFa855f7)), label: 'Files'),
+            NavigationDestination(icon: Icon(Icons.auto_awesome_outlined), selectedIcon: Icon(Icons.auto_awesome, color: Color(0xFFa855f7)), label: 'AI'),
+            NavigationDestination(icon: Icon(Icons.settings_outlined), selectedIcon: Icon(Icons.settings, color: Color(0xFFa855f7)), label: 'Settings'),
+          ],
         ),
       ),
     );
   }
-}
-
-class _NavItem {
-  final IconData icon;
-  final IconData activeIcon;
-  final String label;
-  const _NavItem({required this.icon, required this.activeIcon, required this.label});
 }
